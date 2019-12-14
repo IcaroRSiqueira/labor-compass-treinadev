@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <% if headhunter_signed_in? %>
+      <%= link_to 'Editar Perfil', edit_headhunter_registration_path %>
+      <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Entrar como Headhunter', new_headhunter_session_path %>
+    <% end %>
+    <%= notice %>
+    <%= alert %>
     <%= yield %>
   </body>
 </html>
