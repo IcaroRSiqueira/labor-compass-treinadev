@@ -1,0 +1,8 @@
+<h3>Minhas Vagas</h3>
+<% if @vacancies.empty? %>
+  <p>Nenhuma vaga cadastrada no momento.</p>
+<% end %>
+
+<% @vacancies.each do |vacancy| %>
+  <%= link_to vacancy.title, vacancy %>
+<% end %>

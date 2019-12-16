@@ -1,0 +1,18 @@
+<dl>
+  <dt>Vaga:</dt>
+  <dd><%= @vacancy.title %></dd>
+  <dt>Descrição:</dt>
+  <dd><%= @vacancy.description %> </dd>
+  <dt>Habilidades necessárias:</dt>
+  <dd><%= @vacancy.skill %> </dd>
+  <dt>Faixa salarial (R$):</dt>
+  <dd><%= @vacancy.wage %></dd>
+  <dt>Nível do cargo:</dt>
+  <dd><%= @vacancy.role %></dd>
+  <dt>Data limite de inscriçōes:</dt>
+  <dd><%= @vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+  <dt>Região:</dt>
+  <dd><%= @vacancy.location %></dd>
+</dl>
+
+<%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %>

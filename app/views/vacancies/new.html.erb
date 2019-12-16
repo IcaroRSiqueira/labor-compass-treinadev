@@ -1,0 +1,28 @@
+<h1>Registrar vaga</h1>
+
+<% if @vacancy.errors.any? %>
+  <p>Você deve corrigir os seguintes erros:</p>
+  <ul>
+  <% @vacancy.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @vacancy, local: true do |f| %>
+  <%= f.label :title, 'Título' %>
+  <%= f.text_field :title %>
+  <%= f.label :description, 'Descrição' %>
+  <%= f.text_field :description %>
+  <%= f.label :skill, 'Habilidades necessárias' %>
+  <%= f.text_field :skill %>
+  <%= f.label :wage, 'Faixa salarial' %>
+  <%= f.text_field :wage %>
+  <%= f.label :role, 'Nível do cargo' %>
+  <%= f.text_field :role %>
+  <%= f.label :end_date, 'Data limite de inscriçōes' %>
+  <%= f.date_field :end_date %>
+  <%= f.label :location, 'Região' %>
+  <%= f.text_field :location %>
+  <%= f.submit 'Registrar vaga' %>
+<% end %>

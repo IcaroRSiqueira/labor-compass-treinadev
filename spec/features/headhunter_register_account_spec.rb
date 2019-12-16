@@ -10,7 +10,7 @@ feature 'Headhunter register account' do
 
     fill_in 'Email', with: 'test@test.com'
     fill_in 'Nome da Empresa', with: 'Teste Enterprises'
-    fill_in 'Senha (mínimo 6 dígitos)', with: '123456'
+    fill_in 'Senha', with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
 
     within ('form') do
