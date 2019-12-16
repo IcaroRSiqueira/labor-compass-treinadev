@@ -5,7 +5,7 @@ feature 'Headhunter sign in' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste.inc')
 
-    login_as headhunter
+    login_as(headhunter, scope: :headhunter)
 
     visit root_path
 
@@ -35,7 +35,7 @@ feature 'Headhunter sign in' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste.inc')
 
-    login_as headhunter
+    login_as(headhunter, scope: :headhunter)
 
     visit root_path
 
@@ -63,7 +63,7 @@ feature 'Headhunter sign in' do
                     skill: 'Bom relacionamento interpessoal', wage: '2500-3000',
                     role: 'Pleno', end_date: 10.day.from_now, location: 'Av. Faria Lima')
 
-    login_as headhunter
+    login_as(headhunter, scope: :headhunter)
 
     visit root_path
 
