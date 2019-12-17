@@ -1,5 +1,5 @@
 class VacanciesController < ApplicationController
-  before_action :authenticate_headhunter!
+  before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @vacancies = Vacancy.all

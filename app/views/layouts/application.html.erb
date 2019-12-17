@@ -18,6 +18,10 @@
       <p><%= link_to 'Cadastrar nova vaga', new_vacancy_path %></p>
       <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
     <% elsif candidate_signed_in? %>
+      <p><%= link_to 'Vagas disponíveis', vacancies_path %>
+      <% if current_candidate.status = :incomplete %>
+        <p><%= link_to 'Completar perfil', new_profile_path %></p>
+      <% end %>
       <p><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></p>
     <% else %>
       <p><%= link_to 'Entrar como Headhunter', new_headhunter_session_path %></p>

@@ -3,6 +3,29 @@
   <p>Nenhuma vaga cadastrada no momento.</p>
 <% end %>
 
-<% @vacancies.each do |vacancy| %>
-  <%= link_to vacancy.title, vacancy %>
+<% if candidate_signed_in? %>
+  <dl>
+  <% @vacancies.each do |vacancy| %>
+    <dt>Título:</dt>
+    <dd><%= link_to vacancy.title, vacancy %></dd>
+    <dt>Descrição:</dt>
+    <dd><%= vacancy.description %> </dd>
+    <dt>Habilidades necessárias:</dt>
+    <dd><%= vacancy.skill %> </dd>
+    <dt>Faixa salarial (R$):</dt>
+    <dd><%= vacancy.wage %></dd>
+    <dt>Nível do cargo:</dt>
+    <dd><%= vacancy.role %></dd>
+    <dt>Data limite de inscriçōes:</dt>
+    <dd><%= vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+    <dt>Região:</dt>
+    <dd><%= vacancy.location %></dd>
+  <% end %>
+  </dl>
+<% end %>
+
+<% if headhunter_signed_in? %>
+  <% @vacancies.each do |vacancy| %>
+    <%= link_to vacancy.title, vacancy %>
+  <% end %>
 <% end %>

@@ -3,4 +3,9 @@ class Candidate < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  enum status: {incomplete: 0, complete: 5}
+
+  has_one :profile
+
 end
