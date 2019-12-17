@@ -28,6 +28,11 @@ class VacanciesController < ApplicationController
     redirect_to vacancies_path
   end
 
+  def search
+    @vacancies = Vacancy.where('title like ?', "%#{params[:q]}%")
+    render :index
+  end
+
   private
 
   def vacancy_params
