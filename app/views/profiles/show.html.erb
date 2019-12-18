@@ -1,5 +1,10 @@
 <h1>Perfil</h1>
 
+<% unless @profile.avatar.nil? %>
+  <p>Imagem de perfil:</p>
+  <%= image_tag @profile.avatar %>
+<% end %>
+
 <dl>
   <dt>Nome completo:</dt>
   <dd><%= @profile.full_name %></dd>

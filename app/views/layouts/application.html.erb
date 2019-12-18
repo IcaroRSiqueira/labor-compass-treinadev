@@ -22,7 +22,7 @@
       <% unless current_candidate.complete? %>
         <p><%= link_to 'Completar perfil', new_profile_path %></p>
       <% else %>
-        <p><%= link_to 'Meu perfil', profile_path %></p>
+        <p><%= link_to 'Meu perfil', @profile %></p>
       <% end %>
       <p><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></p>
     <% else %>

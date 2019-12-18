@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @candidate = Candidate.find(params[:id])
 
   end
 
@@ -26,7 +25,7 @@ private
   def profile_params
     params.require(:profile).permit(:full_name, :social_name, :birth_date,
                                     :education, :description, :experience,
-                                    :avatar, :candidate_id)
+                                    :avatar)
   end
 
 end
