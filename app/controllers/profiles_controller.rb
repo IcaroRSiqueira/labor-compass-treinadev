@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @candidate = Candidate.find(params[:id])
+
   end
 
   def new
@@ -10,9 +12,9 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @candidate = Candidate.find(params[:profile][:candidate_id])
+    @profile.candidate = current_candidate
     if @profile.save
-      @candidate.complete!
+      current_candidate.complete!
       redirect_to @profile, notice: 'Perfil cadastrado com sucesso!'
     else
       render :new

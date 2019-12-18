@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xfeature 'Candidate complete profile' do
+feature 'Candidate complete profile' do
   scenario 'from home page' do
     candidate = Candidate.create!(email: 'test@test.com', password: '123456')
 
@@ -28,6 +28,7 @@ xfeature 'Candidate complete profile' do
     expect(page).to have_content ('Bacharelado em física')
     expect(page).to have_content ('Realizado na USP em 2009')
     expect(page).to have_content ('Professor do estado 2012-2015')
+    expect(page).to have_link ('Meu perfil')
     expect(page).not_to have_link ('Completar perfil')
     end
   end

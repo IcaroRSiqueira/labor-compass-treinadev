@@ -19,8 +19,10 @@
       <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
     <% elsif candidate_signed_in? %>
       <p><%= link_to 'Vagas disponíveis', vacancies_path %>
-      <% if current_candidate.status = :incomplete %>
+      <% unless current_candidate.complete? %>
         <p><%= link_to 'Completar perfil', new_profile_path %></p>
+      <% else %>
+        <p><%= link_to 'Meu perfil', profile_path %></p>
       <% end %>
       <p><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></p>
     <% else %>
