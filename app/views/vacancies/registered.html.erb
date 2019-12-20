@@ -1,19 +1,46 @@
-<h1>Minhas vagas</h1>
-<dl>
-<% @registration.each do |registration| %>
-  <dt>Título:</dt>
-  <dd><%= registration.vacancy.title %></dd>
-  <dt>Descrição:</dt>
-  <dd><%= registration.vacancy.description %> </dd>
-  <dt>Habilidades necessárias:</dt>
-  <dd><%= registration.vacancy.skill %> </dd>
-  <dt>Faixa salarial (R$):</dt>
-  <dd><%= registration.vacancy.wage %></dd>
-  <dt>Nível do cargo:</dt>
-  <dd><%= registration.vacancy.role %></dd>
-  <dt>Data limite de inscriçōes:</dt>
-  <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
-  <dt>Região:</dt>
-  <dd><%= registration.vacancy.location %></dd>
+
+<% if candidate_signed_in? %>
+  <h1>Minhas vagas</h1>
+  <dl>
+  <% @registration.each do |registration| %>
+    <dt>Título:</dt>
+    <dd><%= registration.vacancy.title %></dd>
+    <dt>Descrição:</dt>
+    <dd><%= registration.vacancy.description %> </dd>
+    <dt>Habilidades necessárias:</dt>
+    <dd><%= registration.vacancy.skill %> </dd>
+    <dt>Faixa salarial (R$):</dt>
+    <dd><%= registration.vacancy.wage %></dd>
+    <dt>Nível do cargo:</dt>
+    <dd><%= registration.vacancy.role %></dd>
+    <dt>Data limite de inscriçōes:</dt>
+    <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+    <dt>Região:</dt>
+    <dd><%= registration.vacancy.location %></dd>
+  <% end %>
+  </dl>
 <% end %>
-</dl>
+
+<% if headhunter_signed_in? %>
+  <h1>Aplicaçōes para vagas</h1>
+  <dl>
+  <% @registration.each do |registration| %>
+    <dt>Título:</dt>
+    <dd><%= registration.vacancy.title %></dd>
+    <dt>Nome completo:</dt>
+    <dd><%= registration.profile.full_name %></dd>
+    <dt>Nome social:</dt>
+    <dd><%= registration.profile.social_name %> </dd>
+    <dt>Data de nascimento:</dt>
+    <dd><%= registration.profile.birth_date.strftime('%d/%m/%Y') %> </dd>
+    <dt>Formação acadêmica:</dt>
+    <dd><%= registration.profile.education %></dd>
+    <dt>Descrição:</dt>
+    <dd><%= registration.profile.description %></dd>
+    <dt>Experiências profissionais:</dt>
+    <dd><%= registration.profile.experience %></dd>
+    <dt>Mensagem do candidato:</dt>
+    <dd><%= registration.description %></dd>
+  <% end %>
+  </dl>
+<% end %>
