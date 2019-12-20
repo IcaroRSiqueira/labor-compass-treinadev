@@ -15,4 +15,12 @@
   <dd><%= @vacancy.location %></dd>
 </dl>
 
+<% if candidate_signed_in? %>
+  <%= form_with model: @registration, url: apply_vacancy_path(@vacancy), method: :post do |f| %>
+    <%= f.label :description, 'Conte-nos mais sobre você!' %>
+    <%= f.text_field :description %>
+    <%= f.submit 'Aplicar-se à vaga' %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %>

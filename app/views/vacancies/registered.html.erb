@@ -1,0 +1,19 @@
+<h1>Minhas vagas</h1>
+<dl>
+<% @registration.each do |registration| %>
+  <dt>Título:</dt>
+  <dd><%= registration.vacancy.title %></dd>
+  <dt>Descrição:</dt>
+  <dd><%= registration.vacancy.description %> </dd>
+  <dt>Habilidades necessárias:</dt>
+  <dd><%= registration.vacancy.skill %> </dd>
+  <dt>Faixa salarial (R$):</dt>
+  <dd><%= registration.vacancy.wage %></dd>
+  <dt>Nível do cargo:</dt>
+  <dd><%= registration.vacancy.role %></dd>
+  <dt>Data limite de inscriçōes:</dt>
+  <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+  <dt>Região:</dt>
+  <dd><%= registration.vacancy.location %></dd>
+<% end %>
+</dl>

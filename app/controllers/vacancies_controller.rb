@@ -22,6 +22,17 @@ class VacanciesController < ApplicationController
     end
   end
 
+  def apply
+    @vacancy = Vacancy.find(params[:id])
+    @registration = Registration.create!(vacancy: @vacancy, candidate: current_candidate)
+    redirect_to registered_vacancies_path, notice: 'Cadastro realizado com sucesso!'
+  end
+
+  def registered
+    @registration = Registration.all
+    @candidate = current_candidate
+  end
+
   def destroy
     @vacancy = Vacancy.find(params[:id])
     @vacancy.destroy

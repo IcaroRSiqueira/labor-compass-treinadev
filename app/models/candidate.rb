@@ -7,5 +7,7 @@ class Candidate < ApplicationRecord
   enum status: {incomplete: 0, complete: 5}
 
   has_one :profile
+  has_many :registrations
+  has_many :vacancies, through: :registrations
 
 end

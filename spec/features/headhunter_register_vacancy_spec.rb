@@ -23,6 +23,7 @@ feature 'Headhunter sign in' do
 
 
     expect(page).to have_content("Vaga cadastrada com sucesso")
+    expect(page).to have_content("Caçador de candidatos")
     expect(page).to have_content("O funcionário deverá pesquisar por perfis de possíveis futuros funcionários")
     expect(page).to have_content("Bom relacionamento interpessoal")
     expect(page).to have_content("2500-3000")
@@ -61,7 +62,7 @@ feature 'Headhunter sign in' do
     Vacancy.create!(title: 'Caçador de candidatos', description: 'O funcionário
                     deverá pesquisar por perfis de possíveis futuros funcionários',
                     skill: 'Bom relacionamento interpessoal', wage: '2500-3000',
-                    role: 'Pleno', end_date: 10.day.from_now, location: 'Av. Faria Lima')
+                    role: 'Pleno', end_date: 10.day.from_now, location: 'Av. Faria Lima', headhunter: headhunter)
 
     login_as(headhunter, scope: :headhunter)
 
