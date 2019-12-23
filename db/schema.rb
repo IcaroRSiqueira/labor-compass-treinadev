@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_144211) do
+ActiveRecord::Schema.define(version: 2019_12_22_174935) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2019_12_20_144211) do
     t.integer "status"
     t.index ["email"], name: "index_candidates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.date "comment_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "registration_id"
+    t.index ["registration_id"], name: "index_comments_on_registration_id"
   end
 
   create_table "headhunters", force: :cascade do |t|
@@ -97,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_144211) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "registrations"
   add_foreign_key "profiles", "candidates"
   add_foreign_key "registrations", "candidates"
   add_foreign_key "registrations", "vacancies"

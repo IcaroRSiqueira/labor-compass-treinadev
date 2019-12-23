@@ -29,7 +29,8 @@ class VacanciesController < ApplicationController
   end
 
   def registered
-    @registration = Registration.all
+    @registrations = Registration.all
+    @comment = Comment.new
     @candidate = current_candidate
   end
 

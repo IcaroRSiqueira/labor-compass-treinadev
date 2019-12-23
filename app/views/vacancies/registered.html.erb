@@ -2,7 +2,7 @@
 <% if candidate_signed_in? %>
   <h1>Minhas vagas</h1>
   <dl>
-  <% @registration.each do |registration| %>
+  <% @registrations.each do |registration| %>
     <dt>Título:</dt>
     <dd><%= registration.vacancy.title %></dd>
     <dt>Descrição:</dt>
@@ -17,6 +17,12 @@
     <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
     <dt>Região:</dt>
     <dd><%= registration.vacancy.location %></dd>
+    <% unless registration.comments.empty? %>
+      <dt>Comentários do anunciante:</dt>
+      <dd><% registration.comment.each do |comment| %>
+        <%= comment %>
+      <% end %>
+    <% end %>
   <% end %>
   </dl>
 <% end %>
@@ -24,7 +30,7 @@
 <% if headhunter_signed_in? %>
   <h1>Aplicaçōes para vagas</h1>
   <dl>
-  <% @registration.each do |registration| %>
+  <% @registrations.each do |registration| %>
     <dt>Título:</dt>
     <dd><%= registration.vacancy.title %></dd>
     <dt>Nome completo:</dt>
@@ -41,6 +47,19 @@
     <dd><%= registration.profile.experience %></dd>
     <dt>Mensagem do candidato:</dt>
     <dd><%= registration.description %></dd>
+    <% unless registration.comments.empty? %>
+      <dt>Comentários do anunciante:</dt>
+      <% registration.comments.each do |comment| %>
+        <dd><%= comment.body %> </dd>
+        <dd>Enviado em: <%= comment.comment_date %></dd>
+      <% end %>
+    <% end %>
+
+    <%= form_with model: @comment, url: post_comment_path(registration), method: :post do |f| %>
+      <%= f.label :body, 'Comente este perfil' %>
+      <%= f.text_field :body %>
+      <%= f.submit 'Enviar comentário' %>
+    <% end %>
   <% end %>
   </dl>
 <% end %>
