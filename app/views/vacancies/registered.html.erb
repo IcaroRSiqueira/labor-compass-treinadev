@@ -17,12 +17,6 @@
     <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
     <dt>Região:</dt>
     <dd><%= registration.vacancy.location %></dd>
-    <% unless registration.comments.empty? %>
-      <dt>Comentários do anunciante:</dt>
-      <dd><% registration.comment.each do |comment| %>
-        <%= comment %>
-      <% end %>
-    <% end %>
   <% end %>
   </dl>
 <% end %>
@@ -31,6 +25,15 @@
   <h1>Aplicaçōes para vagas</h1>
   <dl>
   <% @registrations.each do |registration| %>
+    <%if registration.featured? %>
+      <p>⭐</p>
+    <% end %>
+    <% if registration.rejected? %>
+      <dt>Feedback:</dt>
+      <% registration.feedbacks.each do |feedback| %>
+        <dd><%= feedback.body %> </dd>
+      <% end %>
+    <% end %>
     <dt>Título:</dt>
     <dd><%= registration.vacancy.title %></dd>
     <dt>Nome completo:</dt>
@@ -59,6 +62,12 @@
       <%= f.label :body, 'Comente este perfil' %>
       <%= f.text_field :body %>
       <%= f.submit 'Enviar comentário' %>
+    <% end %>
+    <% unless registration.rejected? %>
+      <% unless registration.featured? %>
+        <p><%= link_to 'Marcar perfil como destaque', feature_vacancy_path(registration), method: :post %></p>
+      <% end %>
+      <p><%= link_to 'Rejeitar participação', reject_vacancy_path(registration) %></p>
     <% end %>
   <% end %>
   </dl>

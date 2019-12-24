@@ -34,6 +34,17 @@ class VacanciesController < ApplicationController
     @candidate = current_candidate
   end
 
+  def feature
+    @registration = Registration.find(params[:id])
+    @registration.featured!
+    redirect_to registered_vacancies_path, notice: 'Perfil marcado como destaque!'
+  end
+
+  def reject
+    @registration = Registration.find(params[:id])
+    @feedback = Feedback.new
+  end
+
   def destroy
     @vacancy = Vacancy.find(params[:id])
     @vacancy.destroy

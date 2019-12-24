@@ -6,9 +6,14 @@ Rails.application.routes.draw do
     get 'search', on: :collection
     post 'apply', on: :member
     get 'registered', on: :collection
+    post 'feature', on: :member
+    get 'reject', on: :member
   end
   resources :profiles
   resources :comments do
     post 'post', on: :member
+  end
+  resources :feedbacks do
+    post 'decline', on: :member
   end
 end

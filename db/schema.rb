@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_174935) do
+ActiveRecord::Schema.define(version: 2019_12_24_162901) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2019_12_22_174935) do
     t.index ["registration_id"], name: "index_comments_on_registration_id"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "registration_id"
+    t.index ["registration_id"], name: "index_feedbacks_on_registration_id"
+  end
+
   create_table "headhunters", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_12_22_174935) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
+    t.integer "label"
+    t.integer "status"
     t.index ["candidate_id"], name: "index_registrations_on_candidate_id"
     t.index ["vacancy_id"], name: "index_registrations_on_vacancy_id"
   end
@@ -107,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_174935) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "registrations"
+  add_foreign_key "feedbacks", "registrations"
   add_foreign_key "profiles", "candidates"
   add_foreign_key "registrations", "candidates"
   add_foreign_key "registrations", "vacancies"
