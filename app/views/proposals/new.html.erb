@@ -1,6 +1,6 @@
 <h3>Enviar proposta ao usuário</h3>
 
-<%= form_with model: @proposal, url: registration_proposals_path(@registration) do |f| %>
+<%= form_with model: @proposal, url: entry_proposals_path(@entry) do |f| %>
   <%= f.label :start_date, 'Data prevista para início' %>
   <%= f.date_field :start_date %>
   <%= f.label :workload, 'Carga horária' %>

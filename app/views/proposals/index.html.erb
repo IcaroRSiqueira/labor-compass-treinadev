@@ -2,9 +2,9 @@
 <dl>
 <% @proposals.each do |proposal| %>
   <dt>Empresa:</dt>
-  <dd><%= proposal.registration.vacancy.headhunter.name %></dd>
+  <dd><%= proposal.entry.vacancy.headhunter.name %></dd>
   <dt>Proposta enviada para:</dt>
-  <dd><%= proposal.registration.candidate.profile.social_name %></dd>
+  <dd><%= proposal.entry.candidate.profile.social_name %></dd>
   <dt>Data prevista para início:</dt>
   <dd><%= proposal.start_date.strftime('%d/%m/%Y') %></dd>
   <dt>Carga horária:</dt>

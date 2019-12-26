@@ -14,7 +14,7 @@ class VacanciesController < ApplicationController
   end
 
   def create
-    @vacancy = Vacancy.new(vacancy_params)
+    @vacancy = current_headhunter.vacancies.create(vacancy_params)
     if @vacancy.save
       redirect_to @vacancy, notice: 'Vaga cadastrada com sucesso'
     else
@@ -24,24 +24,24 @@ class VacanciesController < ApplicationController
 
   def apply
     @vacancy = Vacancy.find(params[:id])
-    @registration = Registration.create!(vacancy: @vacancy, candidate: current_candidate)
+    @entry = Entry.create!(vacancy: @vacancy, candidate: current_candidate)
     redirect_to registered_vacancies_path, notice: 'Cadastro realizado com sucesso!'
   end
 
   def registered
-    @registrations = Registration.all
+    @entries = Entry.all
     @comment = Comment.new
     @candidate = current_candidate
   end
 
   def feature
-    @registration = Registration.find(params[:id])
-    @registration.featured!
+    @entry = Entry.find(params[:id])
+    @entry.featured!
     redirect_to registered_vacancies_path, notice: 'Perfil marcado como destaque!'
   end
 
   def reject
-    @registration = Registration.find(params[:id])
+    @entry = Entry.find(params[:id])
     @feedback = Feedback.new
   end
 

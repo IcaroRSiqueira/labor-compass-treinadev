@@ -5,11 +5,11 @@
 
 <% if candidate_signed_in? %>
 
-<%= form_with(url: search_vacancies_path, local: true, method: :get) do %>
-  <%= label_tag :q, 'Buscar vaga por título' %>
-  <%= text_field_tag :q %>
-  <%= submit_tag 'Buscar' %>
-<% end %>
+  <%= form_with(url: search_vacancies_path, local: true, method: :get) do %>
+    <%= label_tag :q, 'Buscar vaga por título' %>
+    <%= text_field_tag :q %>
+    <%= submit_tag 'Buscar' %>
+  <% end %>
 
   <dl>
   <% @vacancies.each do |vacancy| %>

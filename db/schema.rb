@@ -51,16 +51,28 @@ ActiveRecord::Schema.define(version: 2019_12_26_150339) do
     t.date "comment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registration_id"
-    t.index ["registration_id"], name: "index_comments_on_registration_id"
+    t.integer "entry_id"
+    t.index ["entry_id"], name: "index_comments_on_entry_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "vacancy_id"
+    t.integer "candidate_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.integer "label"
+    t.integer "status"
+    t.index ["candidate_id"], name: "index_entries_on_candidate_id"
+    t.index ["vacancy_id"], name: "index_entries_on_vacancy_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registration_id"
-    t.index ["registration_id"], name: "index_feedbacks_on_registration_id"
+    t.integer "entry_id"
+    t.index ["entry_id"], name: "index_feedbacks_on_entry_id"
   end
 
   create_table "headhunters", force: :cascade do |t|
@@ -98,21 +110,9 @@ ActiveRecord::Schema.define(version: 2019_12_26_150339) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "candidate_id"
-    t.integer "registration_id"
+    t.integer "entry_id"
     t.index ["candidate_id"], name: "index_proposals_on_candidate_id"
-    t.index ["registration_id"], name: "index_proposals_on_registration_id"
-  end
-
-  create_table "registrations", force: :cascade do |t|
-    t.integer "vacancy_id"
-    t.integer "candidate_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
-    t.integer "label"
-    t.integer "status"
-    t.index ["candidate_id"], name: "index_registrations_on_candidate_id"
-    t.index ["vacancy_id"], name: "index_registrations_on_vacancy_id"
+    t.index ["entry_id"], name: "index_proposals_on_entry_id"
   end
 
   create_table "vacancies", force: :cascade do |t|
@@ -130,12 +130,12 @@ ActiveRecord::Schema.define(version: 2019_12_26_150339) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "registrations"
-  add_foreign_key "feedbacks", "registrations"
+  add_foreign_key "comments", "entries"
+  add_foreign_key "entries", "candidates"
+  add_foreign_key "entries", "vacancies"
+  add_foreign_key "feedbacks", "entries"
   add_foreign_key "profiles", "candidates"
   add_foreign_key "proposals", "candidates"
-  add_foreign_key "proposals", "registrations"
-  add_foreign_key "registrations", "candidates"
-  add_foreign_key "registrations", "vacancies"
+  add_foreign_key "proposals", "entries"
   add_foreign_key "vacancies", "headhunters"
 end

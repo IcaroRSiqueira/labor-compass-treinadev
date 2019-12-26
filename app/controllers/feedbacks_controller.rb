@@ -1,10 +1,10 @@
 class FeedbacksController < ApplicationController
 
   def decline
-    @registration = Registration.find(params[:id])
-    @feedback = @registration.feedbacks.new(feedback_params)
+    @entry = Entry.find(params[:id])
+    @feedback = @entry.feedbacks.new(feedback_params)
     @feedback.save!
-    @registration.rejected!
+    @entry.rejected!
     redirect_to registered_vacancies_path, notice: 'Candidato rejeitado com sucesso'
   end
 

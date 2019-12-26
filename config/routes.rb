@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :feedbacks do
     post 'decline', on: :member
   end
-  resources :registrations do
+  resources :entries do
     resources :proposals
   end
 end

@@ -6,15 +6,15 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
-    @registration = Registration.find(params[:registration_id])
+    @entry = Entry.find(params[:entry_id])
   end
 
   def create
-    @registration = Registration.find(params[:registration_id])
+    @entry = Entry.find(params[:entry_id])
     @headhunter = current_headhunter
-    @candidate = @registration.candidate
-    @proposal = @registration.create_proposal(proposals_params)
-    redirect_to registration_proposals_path, notice: 'Proposta enviada!'
+    @candidate = @entry.candidate
+    @proposal = @entry.create_proposal(proposals_params)
+    redirect_to entry_proposals_path, notice: 'Proposta enviada!'
   end
 
   private

@@ -1,3 +1,3 @@
 class Feedback < ApplicationRecord
-  belongs_to :registration
+  belongs_to :entry
 end

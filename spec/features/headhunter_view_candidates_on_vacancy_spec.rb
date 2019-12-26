@@ -22,11 +22,11 @@ feature 'Headhunter view candidates on vacancy' do
     vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
                     skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
                     end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    Registration.create!(candidate: candidate1, vacancy: vacancy,
+    Entry.create!(candidate: candidate1, vacancy: vacancy,
                          description: 'Possuo bastante experiencia como desenvolvedor')
-    Registration.create!(candidate: candidate2, vacancy: vacancy,
+    Entry.create!(candidate: candidate2, vacancy: vacancy,
                          description: 'Possuo pouca experiencia como desenvolvedor')
-    Registration.create!(candidate: candidate3, vacancy: vacancy,
+    Entry.create!(candidate: candidate3, vacancy: vacancy,
                          description: 'Nao possuo experiencia mas sou proativa')
     login_as(headhunter, scope: :headhunter)
 

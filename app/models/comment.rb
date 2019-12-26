@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :registration
+  belongs_to :entry
 end

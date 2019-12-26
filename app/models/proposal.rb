@@ -1,4 +1,4 @@
 class Proposal < ApplicationRecord
   belongs_to :candidate
-  belongs_to :registration
+  belongs_to :entry
 end

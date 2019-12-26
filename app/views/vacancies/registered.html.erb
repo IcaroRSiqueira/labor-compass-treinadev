@@ -2,21 +2,21 @@
 <% if candidate_signed_in? %>
   <h1>Minhas vagas</h1>
   <dl>
-  <% @registrations.each do |registration| %>
+  <% @entries.each do |entry| %>
     <dt>Título:</dt>
-    <dd><%= registration.vacancy.title %></dd>
+    <dd><%= entry.vacancy.title %></dd>
     <dt>Descrição:</dt>
-    <dd><%= registration.vacancy.description %> </dd>
+    <dd><%= entry.vacancy.description %> </dd>
     <dt>Habilidades necessárias:</dt>
-    <dd><%= registration.vacancy.skill %> </dd>
+    <dd><%= entry.vacancy.skill %> </dd>
     <dt>Faixa salarial (R$):</dt>
-    <dd><%= registration.vacancy.wage %></dd>
+    <dd><%= entry.vacancy.wage %></dd>
     <dt>Nível do cargo:</dt>
-    <dd><%= registration.vacancy.role %></dd>
+    <dd><%= entry.vacancy.role %></dd>
     <dt>Data limite de inscriçōes:</dt>
-    <dd><%= registration.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+    <dd><%= entry.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
     <dt>Região:</dt>
-    <dd><%= registration.vacancy.location %></dd>
+    <dd><%= entry.vacancy.location %></dd>
   <% end %>
   </dl>
 <% end %>
@@ -24,51 +24,51 @@
 <% if headhunter_signed_in? %>
   <h1>Aplicaçōes para vagas</h1>
   <dl>
-  <% @registrations.each do |registration| %>
-    <%if registration.featured? %>
+  <% @entries.each do |entry| %>
+    <%if entry.featured? %>
       <p>⭐</p>
     <% end %>
-    <% if registration.rejected? %>
+    <% if entry.rejected? %>
       <dt>Feedback:</dt>
-      <% registration.feedbacks.each do |feedback| %>
+      <% entry.feedbacks.each do |feedback| %>
         <dd><%= feedback.body %> </dd>
       <% end %>
     <% end %>
     <dt>Título:</dt>
-    <dd><%= registration.vacancy.title %></dd>
+    <dd><%= entry.vacancy.title %></dd>
     <dt>Nome completo:</dt>
-    <dd><%= registration.profile.full_name %></dd>
+    <dd><%= entry.profile.full_name %></dd>
     <dt>Nome social:</dt>
-    <dd><%= registration.profile.social_name %> </dd>
+    <dd><%= entry.profile.social_name %> </dd>
     <dt>Data de nascimento:</dt>
-    <dd><%= registration.profile.birth_date.strftime('%d/%m/%Y') %> </dd>
+    <dd><%= entry.profile.birth_date.strftime('%d/%m/%Y') %> </dd>
     <dt>Formação acadêmica:</dt>
-    <dd><%= registration.profile.education %></dd>
+    <dd><%= entry.profile.education %></dd>
     <dt>Descrição:</dt>
-    <dd><%= registration.profile.description %></dd>
+    <dd><%= entry.profile.description %></dd>
     <dt>Experiências profissionais:</dt>
-    <dd><%= registration.profile.experience %></dd>
+    <dd><%= entry.profile.experience %></dd>
     <dt>Mensagem do candidato:</dt>
-    <dd><%= registration.description %></dd>
-    <% unless registration.comments.empty? %>
+    <dd><%= entry.description %></dd>
+    <% unless entry.comments.empty? %>
       <dt>Comentários do anunciante:</dt>
-      <% registration.comments.each do |comment| %>
+      <% entry.comments.each do |comment| %>
         <dd><%= comment.body %> </dd>
         <dd>Enviado em: <%= comment.comment_date %></dd>
       <% end %>
     <% end %>
 
-    <%= form_with model: @comment, url: post_comment_path(registration), method: :post do |f| %>
+    <%= form_with model: @comment, url: post_comment_path(entry), method: :post do |f| %>
       <%= f.label :body, 'Comente este perfil' %>
       <%= f.text_field :body %>
       <%= f.submit 'Enviar comentário' %>
     <% end %>
-    <% unless registration.rejected? %>
-      <% unless registration.featured? %>
-        <p><%= link_to 'Marcar perfil como destaque', feature_vacancy_path(registration), method: :post %></p>
+    <% unless entry.rejected? %>
+      <% unless entry.featured? %>
+        <p><%= link_to 'Marcar perfil como destaque', feature_vacancy_path(entry), method: :post %></p>
       <% end %>
-      <p><%= link_to 'Enviar proposta para candidato', new_registration_proposal_path(registration) %>
-      <p><%= link_to 'Rejeitar participação', reject_vacancy_path(registration) %></p>
+      <p><%= link_to 'Enviar proposta para candidato', new_entry_proposal_path(entry) %>
+      <p><%= link_to 'Rejeitar participação', reject_vacancy_path(entry) %></p>
     <% end %>
   <% end %>
   </dl>

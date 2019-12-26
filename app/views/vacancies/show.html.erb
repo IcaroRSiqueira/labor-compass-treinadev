@@ -16,7 +16,7 @@
 </dl>
 
 <% if candidate_signed_in? %>
-  <%= form_with model: @registration, url: apply_vacancy_path(@vacancy), method: :post do |f| %>
+  <%= form_with model: @entry, url: apply_vacancy_path(@vacancy), method: :post do |f| %>
     <%= f.label :description, 'Conte-nos mais sobre você!' %>
     <%= f.text_field :description %>
     <%= f.submit 'Aplicar-se à vaga' %>

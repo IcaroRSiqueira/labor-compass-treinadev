@@ -1,5 +1,5 @@
 <h3>Rejeitar participação do candidato para esta vaga</h3>
-<%= form_with model: @feedback, url: decline_feedback_path(@registration), method: :post do |f| %>
+<%= form_with model: @feedback, url: decline_feedback_path(@entry), method: :post do |f| %>
   <%= f.label :body, 'Feedback ao candidato' %>
   <%= f.text_field :body %>
   <%= f.submit 'Enviar feedback' %>

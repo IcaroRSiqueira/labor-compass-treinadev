@@ -12,7 +12,7 @@ feature 'Headhunter rejects candidates' do
     vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
                     skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
                     end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    Registration.create!(candidate: candidate1, vacancy: vacancy,
+    Entry.create!(candidate: candidate1, vacancy: vacancy,
                          description: 'Possuo bastante experiencia como desenvolvedor')
 
     login_as(headhunter, scope: :headhunter)
