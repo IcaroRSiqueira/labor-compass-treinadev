@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature 'Headhunter sign in' do
+feature 'Headhunter register vacancy' do
   scenario 'from home page' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste.inc')
-
+                                    name: 'Teste Enterprises')
+                                    
     login_as(headhunter, scope: :headhunter)
 
     visit root_path

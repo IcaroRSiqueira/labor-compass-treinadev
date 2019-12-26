@@ -1,0 +1,19 @@
+<h1>Propostas enviadas</h1>
+<dl>
+<% @proposals.each do |proposal| %>
+  <dt>Empresa:</dt>
+  <dd><%= proposal.registration.vacancy.headhunter.name %></dd>
+  <dt>Proposta enviada para:</dt>
+  <dd><%= proposal.registration.candidate.profile.social_name %></dd>
+  <dt>Data prevista para início:</dt>
+  <dd><%= proposal.start_date.strftime('%d/%m/%Y') %></dd>
+  <dt>Carga horária:</dt>
+  <dd><%= proposal.workload %> </dd>
+  <dt>Benefícios:</dt>
+  <dd><%= proposal.benefits %> </dd>
+  <dt>Salário:</dt>
+  <dd><%= proposal.wage %></dd>
+  <dt>Detalhes:</dt>
+  <dd><%= proposal.details %></dd>
+<% end %>
+</dl>

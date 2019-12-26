@@ -67,6 +67,7 @@
       <% unless registration.featured? %>
         <p><%= link_to 'Marcar perfil como destaque', feature_vacancy_path(registration), method: :post %></p>
       <% end %>
+      <p><%= link_to 'Enviar proposta para candidato', new_registration_proposal_path(registration) %>
       <p><%= link_to 'Rejeitar participação', reject_vacancy_path(registration) %></p>
     <% end %>
   <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_162901) do
+ActiveRecord::Schema.define(version: 2019_12_26_150339) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(version: 2019_12_24_162901) do
     t.index ["candidate_id"], name: "index_profiles_on_candidate_id"
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.date "start_date"
+    t.string "workload"
+    t.string "benefits"
+    t.string "wage"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "candidate_id"
+    t.integer "registration_id"
+    t.index ["candidate_id"], name: "index_proposals_on_candidate_id"
+    t.index ["registration_id"], name: "index_proposals_on_registration_id"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.integer "vacancy_id"
     t.integer "candidate_id"
@@ -119,6 +133,8 @@ ActiveRecord::Schema.define(version: 2019_12_24_162901) do
   add_foreign_key "comments", "registrations"
   add_foreign_key "feedbacks", "registrations"
   add_foreign_key "profiles", "candidates"
+  add_foreign_key "proposals", "candidates"
+  add_foreign_key "proposals", "registrations"
   add_foreign_key "registrations", "candidates"
   add_foreign_key "registrations", "vacancies"
   add_foreign_key "vacancies", "headhunters"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Headhunter view candidates on vacancy' do
+feature 'Headhunter rejects candidates' do
   scenario 'from home page' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
