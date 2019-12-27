@@ -3,20 +3,31 @@
   <h1>Minhas vagas</h1>
   <dl>
   <% @entries.each do |entry| %>
-    <dt>Título:</dt>
-    <dd><%= entry.vacancy.title %></dd>
-    <dt>Descrição:</dt>
-    <dd><%= entry.vacancy.description %> </dd>
-    <dt>Habilidades necessárias:</dt>
-    <dd><%= entry.vacancy.skill %> </dd>
-    <dt>Faixa salarial (R$):</dt>
-    <dd><%= entry.vacancy.wage %></dd>
-    <dt>Nível do cargo:</dt>
-    <dd><%= entry.vacancy.role %></dd>
-    <dt>Data limite de inscriçōes:</dt>
-    <dd><%= entry.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
-    <dt>Região:</dt>
-    <dd><%= entry.vacancy.location %></dd>
+    <% if entry.avaiable? %>
+      <dt>Status:</dt>
+      <dd>Aguardando resposta</dd>
+      <dt>Título:</dt>
+      <dd><%= entry.vacancy.title %></dd>
+      <dt>Descrição:</dt>
+      <dd><%= entry.vacancy.description %> </dd>
+      <dt>Habilidades necessárias:</dt>
+      <dd><%= entry.vacancy.skill %> </dd>
+      <dt>Faixa salarial (R$):</dt>
+      <dd><%= entry.vacancy.wage %></dd>
+      <dt>Nível do cargo:</dt>
+      <dd><%= entry.vacancy.role %></dd>
+      <dt>Data limite de inscriçōes:</dt>
+      <dd><%= entry.vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+      <dt>Região:</dt>
+      <dd><%= entry.vacancy.location %></dd>
+    <% elsif entry.rejected? %>
+      <dt>Status:</dt>
+      <dd>Recusada</dd>
+      <dt>Título:</dt>
+      <dd><%= entry.vacancy.title %></dd>
+      <dt>Feedback de <%= entry.vacancy.headhunter.name %></dt>
+      <dd><%= entry.feedback.body %></dd>
+    <% end %>
   <% end %>
   </dl>
 <% end %>
@@ -30,9 +41,7 @@
     <% end %>
     <% if entry.rejected? %>
       <dt>Feedback:</dt>
-      <% entry.feedbacks.each do |feedback| %>
-        <dd><%= feedback.body %> </dd>
-      <% end %>
+      <dd><%= entry.feedback.body %> </dd>
     <% end %>
     <dt>Título:</dt>
     <dd><%= entry.vacancy.title %></dd>

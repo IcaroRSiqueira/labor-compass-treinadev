@@ -25,6 +25,7 @@ class VacanciesController < ApplicationController
   def apply
     @vacancy = Vacancy.find(params[:id])
     @entry = Entry.create!(vacancy: @vacancy, candidate: current_candidate)
+    @entry.avaiable!
     redirect_to registered_vacancies_path, notice: 'Cadastro realizado com sucesso!'
   end
 

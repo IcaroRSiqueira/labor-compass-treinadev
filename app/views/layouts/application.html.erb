@@ -20,6 +20,7 @@
       <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
     <% elsif candidate_signed_in? %>
       <p><%= link_to 'Vagas disponíveis', vacancies_path %>
+      <p><%= link_to 'Minhas vagas', registered_vacancies_path %></p>
       <% unless current_candidate.complete? %>
         <p><%= link_to 'Completar perfil', new_profile_path %></p>
       <% else %>

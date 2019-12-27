@@ -4,7 +4,7 @@ class Entry < ApplicationRecord
   has_one :profile, through: :candidate
   has_one :proposal
   has_many :comments
-  has_many :feedbacks
+  has_one :feedback
   enum label: {not_featured: 0, featured: 5}
   enum status: {avaiable: 0, rejected: 5}
 end
