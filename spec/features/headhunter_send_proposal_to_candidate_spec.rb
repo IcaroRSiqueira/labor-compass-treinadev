@@ -29,12 +29,7 @@ feature 'Headhunter send proposal to candidate' do
     click_on 'Enviar proposta'
 
     expect(page).to have_content("Proposta enviada!")
-    expect(page).to have_content("Teste Enterprises")
+    expect(page).to have_link("Desenvolvedor Web")
     expect(page).to have_content("Leticia Silva")
-    expect(page).to have_content(20.day.from_now.strftime('%d/%m/%Y'))
-    expect(page).to have_content("Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais")
-    expect(page).to have_content("Vale transporte e alimentação")
-    expect(page).to have_content("R$ 3000,00 ao mês")
-    expect(page).to have_content("A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa")
   end
 end

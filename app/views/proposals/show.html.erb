@@ -16,6 +16,10 @@
   <dd><%= @proposal.details %></dd>
 </dl>
 
-<p><%= link_to 'Aceitar proposta', confirm_entry_proposal_path(@proposal) %></p>
-<p><%= link_to 'Rejeitar proposta', refuse_entry_proposal_path(@proposal) %></p><br>
-<p><%= link_to 'Voltar', entry_proposals_path(current_candidate) %></p>
+<% if candidate_signed_in? %>
+  <% unless @proposal.refused? || @proposal.accepted? %>
+    <p><%= link_to 'Aceitar proposta', confirm_entry_proposal_path(@proposal) %></p>
+    <p><%= link_to 'Rejeitar proposta', refuse_entry_proposal_path(@proposal) %></p><br>
+  <% end %>
+  <p><%= link_to 'Voltar', entry_proposals_path(current_candidate) %></p>
+<% end %>

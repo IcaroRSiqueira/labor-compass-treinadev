@@ -15,6 +15,7 @@
       <p><%= link_to 'Home', root_path %></p>
       <p><%= link_to 'Editar Perfil', edit_headhunter_registration_path %></p>
       <p><%= link_to 'Minhas vagas', vacancies_path %>
+      <p><%= link_to 'Minhas propostas', entry_proposals_path(current_headhunter) %></p>
       <p><%= link_to 'Aplicaçōes recebidas', registered_vacancies_path %></p>
       <p><%= link_to 'Cadastrar nova vaga', new_vacancy_path %></p>
       <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>

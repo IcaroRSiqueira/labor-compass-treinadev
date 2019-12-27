@@ -23,4 +23,6 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %>
+<% if headhunter_signed_in? %>
+  <%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %>
+<% end %>
