@@ -24,5 +24,6 @@
 <% end %>
 
 <% if headhunter_signed_in? %>
-  <%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %>
+  <p><%= link_to 'Encerrar inscrições para esta vaga', finalize_vacancy_path(@vacancy), method: :post  %></p><br>
+  <p><%= link_to 'Deletar vaga', vacancy_path(@vacancy), :data => {:method => "delete"} %></p>
 <% end %>

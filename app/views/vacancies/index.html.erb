@@ -1,5 +1,5 @@
 <h3>Minhas Vagas</h3>
-<% if @vacancies.empty? %>
+<% if @vacancies.avaiable.empty? %>
   <p>Nenhuma vaga cadastrada no momento.</p>
 <% end %>
 
@@ -13,26 +13,38 @@
 
   <dl>
   <% @vacancies.each do |vacancy| %>
-    <dt>Título:</dt>
-    <dd><%= link_to vacancy.title, vacancy %></dd>
-    <dt>Descrição:</dt>
-    <dd><%= vacancy.description %> </dd>
-    <dt>Habilidades necessárias:</dt>
-    <dd><%= vacancy.skill %> </dd>
-    <dt>Faixa salarial (R$):</dt>
-    <dd><%= vacancy.wage %></dd>
-    <dt>Nível do cargo:</dt>
-    <dd><%= vacancy.role %></dd>
-    <dt>Data limite de inscriçōes:</dt>
-    <dd><%= vacancy.end_date.strftime('%d/%m/%Y') %></dd>
-    <dt>Região:</dt>
-    <dd><%= vacancy.location %></dd>
+    <% unless vacancy.finalized? %>
+      <dt>Título:</dt>
+      <dd><%= link_to vacancy.title, vacancy %></dd>
+      <dt>Descrição:</dt>
+      <dd><%= vacancy.description %> </dd>
+      <dt>Habilidades necessárias:</dt>
+      <dd><%= vacancy.skill %> </dd>
+      <dt>Faixa salarial (R$):</dt>
+      <dd><%= vacancy.wage %></dd>
+      <dt>Nível do cargo:</dt>
+      <dd><%= vacancy.role %></dd>
+      <dt>Data limite de inscriçōes:</dt>
+      <dd><%= vacancy.end_date.strftime('%d/%m/%Y') %></dd>
+      <dt>Região:</dt>
+      <dd><%= vacancy.location %></dd>
+    <% end %>
   <% end %>
   </dl>
 <% end %>
 
 <% if headhunter_signed_in? %>
+<dl>
   <% @vacancies.each do |vacancy| %>
-    <%= link_to vacancy.title, vacancy %>
+    <%if vacancy.finalized? %>
+      <p>Status: Inscrições encerradas</p>
+    <% elsif vacancy.avaiable? %>
+      <p>Status: Inscrições abertas</p>
+    <% end %>
+    <dt>Título:</dt>
+    <dd><%= link_to vacancy.title, vacancy %></dd>
+    <dt>Descrição:</dt>
+    <dd><%= vacancy.description %> </dd>
   <% end %>
+</dl>
 <% end %>

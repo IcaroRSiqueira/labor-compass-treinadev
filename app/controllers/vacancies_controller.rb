@@ -46,6 +46,13 @@ class VacanciesController < ApplicationController
     @feedback = Feedback.new
   end
 
+  def finalize
+    @vacancy = Vacancy.find(params[:id])
+    @vacancy.finalized!
+    @vacancy.save
+    redirect_to vacancies_path, notice: 'Vaga encerrada com sucesso'
+  end
+
   def destroy
     @vacancy = Vacancy.find(params[:id])
     @vacancy.destroy

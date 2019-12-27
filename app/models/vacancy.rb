@@ -4,4 +4,6 @@ class Vacancy < ApplicationRecord
   belongs_to :headhunter
   has_many :entries
   has_many :candidates, through: :registrations
+  enum status: {avaiable: 0, finalized: 5}
+
 end

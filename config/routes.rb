@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'registered', on: :collection
     post 'feature', on: :member
     get 'reject', on: :member
+    post 'finalize', on: :member
   end
   resources :profiles
   resources :comments do
