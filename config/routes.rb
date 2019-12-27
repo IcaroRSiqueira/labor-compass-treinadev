@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     post 'decline', on: :member
   end
   resources :entries do
-    resources :proposals
+    resources :proposals do
+      get 'confirm', on: :member
+      get 'refuse', on: :member
+    end
+  end
+  resources :reports do
+    post 'positive', on: :member
+    post 'negative', on: :member
   end
 end

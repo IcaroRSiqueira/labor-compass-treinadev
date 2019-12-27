@@ -1,0 +1,7 @@
+<h2>Recusar proposta</h2>
+<p>Você tem certeza que deseja recusar esta proposta? Esta ação não pode ser desfeita.</p>
+   <%= form_with model: @report, url: negative_report_path(@proposal), method: :post do |f| %>
+     <%= f.label :body, 'Mensagem adicional (opcional)' %>
+     <%= f.text_field :body %>
+     <%= f.submit 'Confirmar rejeição da proposta' %>
+   <% end %>

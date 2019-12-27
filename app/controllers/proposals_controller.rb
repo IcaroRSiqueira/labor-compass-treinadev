@@ -14,7 +14,22 @@ class ProposalsController < ApplicationController
     @headhunter = current_headhunter
     @candidate = @entry.candidate
     @proposal = @entry.create_proposal(proposals_params)
+    @proposal.avaiable!
     redirect_to entry_proposals_path, notice: 'Proposta enviada!'
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
+  end
+
+  def confirm
+    @proposal = Proposal.find(params[:id])
+    @report = Report.new
+  end
+
+  def refuse
+    @proposal = Proposal.find(params[:id])
+    @report = Report.new
   end
 
   private

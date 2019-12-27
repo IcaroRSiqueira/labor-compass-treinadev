@@ -1,0 +1,10 @@
+<h2>Aceitar proposta</h2>
+<p>Você tem certeza que deseja aceitar esta proposta? Ao clicar em "Confirmar
+   e aceitar proposta", todas as suas aplicaçōes em outras vagas terão o status
+   automaticamente trocado para "Rejeitada".</p>
+
+   <%= form_with model: @report, url: positive_report_path(@proposal), method: :post do |f| %>
+     <%= f.label :body, 'Mensagem adicional (opcional)' %>
+     <%= f.text_field :body %>
+     <%= f.submit 'Confirmar e aceitar proposta' %>
+   <% end %>

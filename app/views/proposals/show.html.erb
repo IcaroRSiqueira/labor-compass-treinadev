@@ -1,0 +1,21 @@
+<h3><%= @proposal.entry.vacancy.title %></h3>
+<dl>
+  <dt>Empresa:</dt>
+  <dd><%= @proposal.entry.vacancy.headhunter.name %></dd>
+  <dt>Proposta enviada para:</dt>
+  <dd><%= @proposal.entry.candidate.profile.social_name %></dd>
+  <dt>Data prevista para início:</dt>
+  <dd><%= @proposal.start_date.strftime('%d/%m/%Y') %></dd>
+  <dt>Carga horária:</dt>
+  <dd><%= @proposal.workload %> </dd>
+  <dt>Benefícios:</dt>
+  <dd><%= @proposal.benefits %> </dd>
+  <dt>Salário:</dt>
+  <dd><%= @proposal.wage %></dd>
+  <dt>Detalhes:</dt>
+  <dd><%= @proposal.details %></dd>
+</dl>
+
+<p><%= link_to 'Aceitar proposta', confirm_entry_proposal_path(@proposal) %></p>
+<p><%= link_to 'Rejeitar proposta', refuse_entry_proposal_path(@proposal) %></p><br>
+<p><%= link_to 'Voltar', entry_proposals_path(current_candidate) %></p>

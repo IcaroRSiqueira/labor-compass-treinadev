@@ -24,6 +24,7 @@ feature 'Candidate view proposal' do
     visit root_path
 
     click_on 'Propostas recebidas'
+    click_on vacancy.title
 
     expect(page).to have_content("Teste Enterprises")
     expect(page).to have_content("Leticia Silva")
