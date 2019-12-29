@@ -32,4 +32,37 @@ feature 'Headhunter send proposal to candidate' do
     expect(page).to have_link("Desenvolvedor Web")
     expect(page).to have_content("Leticia Silva")
   end
+  scenario 'cannot_send_another_proposal_to_the_same_candidato_about_the_same_entry' do
+    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
+                                    name: 'Teste Enterprises')
+    candidate1 = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
+    profile1 = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
+                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
+                              description: 'Curso finalizado em 2010',
+                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate1)
+    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
+                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
+                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+    entry = Entry.create!(candidate: candidate1, vacancy: vacancy,
+                         description: 'Possuo bastante experiencia como desenvolvedor')
+    Proposal.create!(entry: entry, candidate: candidate1, start_date: 20.day.from_now,
+                     workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
+                     benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional')
+    login_as(headhunter, scope: :headhunter)
+
+    visit root_path
+
+    click_on 'Aplicaçōes recebidas'
+    click_on 'Enviar proposta para candidato'
+    fill_in 'Data prevista para início', with: 30.day.from_now
+    fill_in 'Carga horária', with: 'Segunda a sabado, das 9 as 17h, totalizando 41 horas semanais'
+    fill_in 'Benefícios', with: 'nenhum'
+    fill_in 'Salário', with: 'R$ 1000,00 ao mês'
+    fill_in 'Detalhes', with: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa'
+    click_on 'Enviar proposta'
+
+    expect(page).not_to have_content("Proposta enviada!")
+    expect(page).to have_content('Você ja enviou uma proposta para esta aplicação')
+  end
 end

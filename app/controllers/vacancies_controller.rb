@@ -1,5 +1,5 @@
 class VacanciesController < ApplicationController
-  before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy, :finalize]
   before_action :redirect_candidate_to_new_profile, only: [:index, :show, :search]
 
   def index

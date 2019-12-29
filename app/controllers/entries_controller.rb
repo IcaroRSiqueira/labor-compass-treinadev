@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_headhunter!, only: [:feature, :unfeature, :reject]
+  before_action :authenticate_candidate!, only: [:apply]
 
   def registered
     @entries = Entry.all

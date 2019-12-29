@@ -11,29 +11,31 @@
 
   <body>
     <nav>
-    <% if headhunter_signed_in? %>
-      <p><%= link_to 'Home', root_path %></p>
-      <p><%= link_to 'Editar Perfil', edit_headhunter_registration_path %></p>
-      <p><%= link_to 'Minhas vagas', vacancies_path %>
-      <p><%= link_to 'Minhas propostas', entry_proposals_path(current_headhunter) %></p>
-      <p><%= link_to 'Aplicaçōes recebidas', registered_entries_path %></p>
-      <p><%= link_to 'Cadastrar nova vaga', new_vacancy_path %></p>
-      <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
-    <% elsif candidate_signed_in? %>
-      <p><%= link_to 'Home', root_path %></p>
-      <p><%= link_to 'Vagas disponíveis', vacancies_path %>
-      <p><%= link_to 'Minhas vagas', registered_entries_path %></p>
-      <p><%= link_to 'Propostas recebidas', entry_proposals_path(current_candidate) %></p>
-      <% unless current_candidate.complete? %>
-        <p><%= link_to 'Completar perfil', new_profile_path %></p>
+      <p>
+      <% if headhunter_signed_in? %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Editar Perfil', edit_headhunter_registration_path %>
+        <%= link_to 'Cadastrar nova vaga', new_vacancy_path %>
+        <%= link_to 'Minhas vagas', vacancies_path %>
+        <%= link_to 'Aplicaçōes recebidas', registered_entries_path %>
+        <%= link_to 'Minhas propostas', entry_proposals_path(current_headhunter) %>
+        <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
+      <% elsif candidate_signed_in? %>
+          <%= link_to 'Home', root_path %>
+          <%= link_to 'Vagas disponíveis', vacancies_path %>
+          <%= link_to 'Minhas vagas', registered_entries_path %>
+          <%= link_to 'Propostas recebidas', entry_proposals_path(current_candidate) %>
+          <% unless current_candidate.complete? %>
+            <%= link_to 'Completar perfil', new_profile_path %>
+            <% else %>
+              <%= link_to 'Meu perfil', profile_path(current_candidate) %>
+        <% end %>
+          <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></p>
       <% else %>
-        <p><%= link_to 'Meu perfil', profile_path(current_candidate) %></p>
+          <%= link_to 'Entrar como Headhunter', new_headhunter_session_path %></p>
+          <%= link_to 'Entrar como Candidato', new_candidate_session_path %>
       <% end %>
-      <p><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></p>
-    <% else %>
-      <p><%= link_to 'Entrar como Headhunter', new_headhunter_session_path %></p>
-      <p><%= link_to 'Entrar como Candidato', new_candidate_session_path %>
-    <% end %>
+      </p>
     </nav>
     <%= notice %>
     <%= alert %>

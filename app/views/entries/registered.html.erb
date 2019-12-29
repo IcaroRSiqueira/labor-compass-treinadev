@@ -29,6 +29,7 @@
     <% end %>
   <% end %>
   </dl>
+  <hr>
 <% end %>
 
 <% if headhunter_signed_in? %>
@@ -44,6 +45,7 @@
     <% end %>
     <dt>Título:</dt>
     <dd><%= entry.vacancy.title %></dd>
+    <%= image_tag(entry.profile.avatar) if entry.profile.avatar.attached? %>
     <dt>Nome completo:</dt>
     <dd><%= entry.profile.full_name %></dd>
     <dt>Nome social:</dt>
@@ -83,4 +85,5 @@
     <% end %>
   <% end %>
   </dl>
+  <hr>
 <% end %>

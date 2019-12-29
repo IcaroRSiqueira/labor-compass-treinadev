@@ -28,6 +28,8 @@
       <dd><%= vacancy.end_date.strftime('%d/%m/%Y') %></dd>
       <dt>Região:</dt>
       <dd><%= vacancy.location %></dd>
+      <p>Esta vaga possui <%=vacancy.entries.count %> inscriçōes no momento</p>
+      <hr>
     <% end %>
   <% end %>
   </dl>
@@ -45,6 +47,8 @@
     <dd><%= link_to vacancy.title, vacancy %></dd>
     <dt>Descrição:</dt>
     <dd><%= vacancy.description %> </dd>
+    <p>Esta vaga possui <%=vacancy.entries.count %> inscriçōes no momento</p>
+    <hr>
   <% end %>
 </dl>
 <% end %>

@@ -1,4 +1,7 @@
 class ProposalsController < ApplicationController
+  before_action :authenticate_headhunter!, only: [:new, :create]
+  before_action :authenticate_candidate!, only: [:confirm, :refuse]
+
 
   def index
     @proposals = Proposal.all
@@ -11,11 +14,15 @@ class ProposalsController < ApplicationController
 
   def create
     @entry = Entry.find(params[:entry_id])
-    @headhunter = current_headhunter
-    @candidate = @entry.candidate
-    @proposal = @entry.create_proposal(proposals_params)
-    @proposal.avaiable!
-    redirect_to entry_proposals_path, notice: 'Proposta enviada!'
+    if @entry.proposal.nil?
+      @headhunter = current_headhunter
+      @candidate = @entry.candidate
+      @proposal = @entry.create_proposal(proposals_params)
+      @proposal.avaiable!
+      redirect_to entry_proposals_path, notice: 'Proposta enviada!'
+    elsif @entry.proposal.present?
+      redirect_to entry_proposals_path, notice: 'Você ja enviou uma proposta para esta aplicação'
+    end
   end
 
   def show

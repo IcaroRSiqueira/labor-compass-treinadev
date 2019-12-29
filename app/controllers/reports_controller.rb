@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_candidate!
 
   def positive
     @proposals = Proposal.all

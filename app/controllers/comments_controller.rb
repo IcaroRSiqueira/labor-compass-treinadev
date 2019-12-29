@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_headhunter!
 
   def post
     @entry = Entry.find(params[:id])

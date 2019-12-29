@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :authenticate_headhunter!
 
   def decline
     @entry = Entry.find(params[:id])
