@@ -33,7 +33,7 @@ feature 'Candidate register on vacancy' do
     expect(page).to have_content("Av Paulista")
   end
 
-  scenario 'candidate must not see vacancy that was already applied by him' do
+  scenario 'candidate cant register that was already applied by him' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
     candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
@@ -42,7 +42,7 @@ feature 'Candidate register on vacancy' do
                               description: 'Curso finalizado em 2015',
                               experience: '3 anos de desenvolvimento back end em ruby', candidate: candidate)
     vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior', visibility: :invisible,
+                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
                     end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter, status: :avaiable)
     entry = Entry.create!(candidate: candidate, vacancy: vacancy, status: :avaiable,
                           description: 'Possuo bastante experiencia como desenvolvedor')
@@ -51,16 +51,13 @@ feature 'Candidate register on vacancy' do
     visit root_path
 
     click_on 'Vagas disponíveis'
+    click_on vacancy.title
+    fill_in 'Conte-nos mais sobre você!', with: 'Possuo 3 anos de experiência em desenvolvimento web com ruby'
+    click_on 'Aplicar-se à vaga'
 
 
-    expect(page).not_to have_content("Desenvolvedor Web")
-    expect(page).not_to have_content("Desenvilvimento de paginas web com ruby on rails")
-    expect(page).not_to have_content("Experiencia com ruby on rails")
-    expect(page).not_to have_content("3000")
-    expect(page).not_to have_content("Junior")
-    expect(page).not_to have_content(15.day.from_now.strftime('%d/%m/%Y'))
-    expect(page).not_to have_content("Av Paulista")
-    expect(page).to have_content('Nenhuma vaga disponível no momento.')
+    expect(page).not_to have_content("Cadastro realizado com sucesso!")
+    expect(page).to have_content('Você ja se cadastrou para esta vaga')
 
   end
 

@@ -11,10 +11,9 @@ class EntriesController < ApplicationController
     @entry = Entry.create(entry_params)
     if @entry.save
       @entry.avaiable!
-      @vacancy.invisible!
       redirect_to registered_entries_path, notice: 'Cadastro realizado com sucesso!'
     else
-      redirect_to @vacancy, notice: "Você deve corrigir o(s) seguinte(s) erro(s): #{(@entry.errors.full_messages.each {|m| m}).join}"
+      redirect_to @vacancy, notice: "Erro(s): #{(@entry.errors.full_messages.each {|m| m}).join}"
     end
   end
 
