@@ -1,0 +1,34 @@
+<dl>
+<% @proposals.each do |proposal| %>
+  <% if proposal.accepted? %>
+    <dt>Status:</dt>
+    <dd>Proposta aceita ✅</dd>
+    <dt>Vaga:</dt>
+    <dd><%= link_to proposal.entry.vacancy.title, entry_proposal_path(proposal, proposal.entry) %></dd>
+    <dt>Candidato:</dt>
+    <dd><%= proposal.entry.candidate.profile.social_name %></dd>
+    <% unless proposal.report.blank? %>
+      <dt>Mensagem adicional:</dt>
+      <dd><%= proposal.report.body %></dd>
+    <% end %>
+  <% elsif proposal.refused? %>
+    <dt>Status:</dt>
+    <dd>Proposta recusada ❌</dd>
+    <dt>Vaga:</dt>
+    <dd><%= link_to proposal.entry.vacancy.title, entry_proposal_path(proposal, proposal.entry) %></dd>
+    <dt>Candidato:</dt>
+    <dd><%= proposal.entry.candidate.profile.social_name %></dd>
+    <% unless proposal.report.blank? %>
+      <dt>Mensagem adicional:</dt>
+      <dd><%= proposal.report.body %></dd>
+    <% end %>
+  <% else %>
+    <dt>Status:</dt>
+    <dd>Aguardando sua resposta 💬</dd>
+    <dt>Vaga:</dt>
+    <dd><%= link_to proposal.entry.vacancy.title, entry_proposal_path(proposal, proposal.entry) %></dd>
+    <dt>Candidato:</dt>
+    <dd><%= proposal.entry.candidate.profile.social_name %></dd>
+  <% end %>
+<% end %>
+</dl>

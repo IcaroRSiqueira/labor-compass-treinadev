@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :vacancies do
     get 'search', on: :collection
-    post 'apply', on: :member
-    get 'registered', on: :collection
-    post 'feature', on: :member
-    get 'reject', on: :member
     post 'finalize', on: :member
+  end
+  resources :entries do
+    post 'apply', on: :member
+    post 'feature', on: :member
+    get 'registered', on: :collection
+    get 'reject', on: :member
   end
   resources :profiles
   resources :comments do

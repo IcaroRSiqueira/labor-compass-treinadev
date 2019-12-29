@@ -74,10 +74,10 @@
     <% end %>
     <% unless entry.rejected? %>
       <% unless entry.featured? %>
-        <p><%= link_to 'Marcar perfil como destaque', feature_vacancy_path(entry), method: :post %></p>
+        <p><%= link_to 'Marcar perfil como destaque', feature_entry_path(entry), method: :post %></p>
       <% end %>
       <p><%= link_to 'Enviar proposta para candidato', new_entry_proposal_path(entry) %>
-      <p><%= link_to 'Rejeitar participação', reject_vacancy_path(entry) %></p>
+      <p><%= link_to 'Rejeitar participação', reject_entry_path(entry) %></p>
     <% end %>
   <% end %>
   </dl>

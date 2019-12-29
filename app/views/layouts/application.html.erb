@@ -16,12 +16,13 @@
       <p><%= link_to 'Editar Perfil', edit_headhunter_registration_path %></p>
       <p><%= link_to 'Minhas vagas', vacancies_path %>
       <p><%= link_to 'Minhas propostas', entry_proposals_path(current_headhunter) %></p>
-      <p><%= link_to 'Aplicaçōes recebidas', registered_vacancies_path %></p>
+      <p><%= link_to 'Aplicaçōes recebidas', registered_entries_path %></p>
       <p><%= link_to 'Cadastrar nova vaga', new_vacancy_path %></p>
       <p><%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %></p>
     <% elsif candidate_signed_in? %>
+      <p><%= link_to 'Home', root_path %></p>
       <p><%= link_to 'Vagas disponíveis', vacancies_path %>
-      <p><%= link_to 'Minhas vagas', registered_vacancies_path %></p>
+      <p><%= link_to 'Minhas vagas', registered_entries_path %></p>
       <p><%= link_to 'Propostas recebidas', entry_proposals_path(current_candidate) %></p>
       <% unless current_candidate.complete? %>
         <p><%= link_to 'Completar perfil', new_profile_path %></p>

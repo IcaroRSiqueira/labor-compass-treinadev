@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @entry.comments.new(comments_params)
     @comment.comment_date = Date.current
     @comment.save!
-    redirect_to registered_vacancies_path, notice: 'Comentário enviado'
+    redirect_to registered_entries_path, notice: 'Comentário enviado'
   end
   private
 
