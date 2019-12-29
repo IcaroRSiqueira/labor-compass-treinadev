@@ -1,0 +1,17 @@
+<%= form_with model: @profile, local: true do |f| %>
+  <%= f.label :full_name, 'Nome completo' %>
+  <%= f.text_field :full_name %>
+  <%= f.label :social_name, 'Nome social' %>
+  <%= f.text_field :social_name %>
+  <%= f.label :avatar, 'Imagem de perfil' %>
+  <%= f.file_field :avatar %><br>
+  <%= f.label :birth_date, 'Data de nascimento' %>
+  <%= f.date_field :birth_date %>
+  <%= f.label :education, 'Formação acadêmica' %>
+  <%= f.text_field :education %>
+  <%= f.label :description, 'Descrição' %>
+  <%= f.text_field :description %>
+  <%= f.label :experience, 'Experiências profissionais' %>
+  <%= f.text_field :experience %>
+  <%= f.submit 'Registrar perfil' %>
+<% end %>

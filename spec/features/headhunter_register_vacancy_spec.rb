@@ -71,7 +71,7 @@ feature 'Headhunter register vacancy' do
     click_on 'Caçador de candidatos'
     click_on 'Deletar vaga'
 
-    expect(page).to have_content('Nenhuma vaga cadastrada no momento')
+    expect(page).to have_content('Nenhuma vaga disponível no momento')
     expect(page).not_to have_link('Caçador de candidatos')
 
   end

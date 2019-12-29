@@ -7,6 +7,7 @@ class VacanciesController < ApplicationController
 
   def show
     @vacancy = Vacancy.find(params[:id])
+    @entry = Entry.new
   end
 
   def new
@@ -16,6 +17,7 @@ class VacanciesController < ApplicationController
   def create
     @vacancy = current_headhunter.vacancies.create(vacancy_params)
     if @vacancy.save
+      @vacancy.avaiable!
       redirect_to @vacancy, notice: 'Vaga cadastrada com sucesso'
     else
       render :new

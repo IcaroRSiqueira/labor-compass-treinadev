@@ -1,10 +1,6 @@
 <h1>Perfil</h1>
 
-<% unless @profile.avatar.nil? %>
-  <p>Imagem de perfil:</p>
-  <%= image_tag @profile.avatar %>
-<% end %>
-
+<%= image_tag(@profile.avatar) if @profile.avatar.attached? %>
 <dl>
   <dt>Nome completo:</dt>
   <dd><%= @profile.full_name %></dd>
@@ -19,3 +15,5 @@
   <dt>Experiências profissionais:</dt>
   <dd><%= @profile.experience %></dd>
 </dl>
+
+<p><%= link_to 'Editar perfil', edit_profile_path %></p>

@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :entries do
     post 'apply', on: :member
     post 'feature', on: :member
+    post 'unfeature', on: :member
     get 'registered', on: :collection
     get 'reject', on: :member
   end
-  resources :profiles
+  resources :profiles, only: [:new, :create, :edit, :update, :show]
   resources :comments do
     post 'post', on: :member
   end

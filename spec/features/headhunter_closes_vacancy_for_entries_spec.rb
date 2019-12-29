@@ -46,7 +46,7 @@ feature 'Headhunter closes vacancy' do
     click_on 'Vagas disponíveis'
 
 
-    expect(page).to have_content("Nenhuma vaga cadastrada no momento")
+    expect(page).to have_content("Nenhuma vaga disponível no momento")
     expect(page).not_to have_content("Desenvolvedor Web")
   end
 end

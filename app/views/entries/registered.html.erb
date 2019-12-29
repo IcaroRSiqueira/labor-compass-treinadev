@@ -1,4 +1,3 @@
-
 <% if candidate_signed_in? %>
   <h1>Minhas vagas</h1>
   <dl>
@@ -75,6 +74,9 @@
     <% unless entry.rejected? %>
       <% unless entry.featured? %>
         <p><%= link_to 'Marcar perfil como destaque', feature_entry_path(entry), method: :post %></p>
+      <% end %>
+      <% if entry.featured? %>
+        <p><%= link_to 'Desmarcar destaque', unfeature_entry_path(entry), method: :post %></p>
       <% end %>
       <p><%= link_to 'Enviar proposta para candidato', new_entry_proposal_path(entry) %>
       <p><%= link_to 'Rejeitar participação', reject_entry_path(entry) %></p>

@@ -1,6 +1,6 @@
 <h3>Minhas Vagas</h3>
-<% if @vacancies.avaiable.empty? %>
-  <p>Nenhuma vaga cadastrada no momento.</p>
+<% if @vacancies.avaiable.empty? || @vacancies.visible.empty?%>
+  <p>Nenhuma vaga disponível no momento.</p>
 <% end %>
 
 <% if candidate_signed_in? %>
@@ -13,7 +13,7 @@
 
   <dl>
   <% @vacancies.each do |vacancy| %>
-    <% unless vacancy.finalized? %>
+    <% unless vacancy.finalized? || vacancy.invisible? %>
       <dt>Título:</dt>
       <dd><%= link_to vacancy.title, vacancy %></dd>
       <dt>Descrição:</dt>

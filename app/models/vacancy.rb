@@ -5,5 +5,6 @@ class Vacancy < ApplicationRecord
   has_many :entries
   has_many :candidates, through: :registrations
   enum status: {avaiable: 0, finalized: 5}
+  enum visibility: {visible: 0, invisible: 5}
 
 end

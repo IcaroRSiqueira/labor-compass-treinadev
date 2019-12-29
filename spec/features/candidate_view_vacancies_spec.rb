@@ -32,4 +32,17 @@ feature 'Candidate view vacancies' do
     expect(page).to have_content(15.day.from_now.strftime('%d/%m/%Y'))
     expect(page).to have_content("Av Paulista")
   end
+
+  scenario 'no vacancies message' do
+    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
+                                    name: 'Teste Enterprises')
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    login_as(candidate, scope: :candidate)
+
+    visit root_path
+
+    click_on 'Vagas disponíveis'
+
+    expect(page).to have_content("Nenhuma vaga disponível no momento.")
+  end
 end

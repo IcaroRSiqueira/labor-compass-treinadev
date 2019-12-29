@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_candidate!
 
   def show
     @profile = Profile.find(params[:id])
@@ -7,6 +8,20 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
+  end
+
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      flash[:notice] = 'Perfil alterado com sucesso!'
+      redirect_to @profile
+    else
+      render :edit
+    end
   end
 
   def create
@@ -27,5 +42,4 @@ private
                                     :education, :description, :experience,
                                     :avatar)
   end
-
 end
