@@ -4,7 +4,7 @@ feature 'Candidate view vacancies' do
   scenario 'from home page' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
     login_as(candidate, scope: :candidate)
     Vacancy.create!(title: 'Entregador', description: 'Realizar entregas',
                     skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
@@ -36,7 +36,7 @@ feature 'Candidate view vacancies' do
   scenario 'no vacancies message' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
     login_as(candidate, scope: :candidate)
 
     visit root_path

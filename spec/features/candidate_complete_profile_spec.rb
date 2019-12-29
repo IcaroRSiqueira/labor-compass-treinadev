@@ -32,7 +32,21 @@ feature 'Candidate complete profile' do
     expect(page).to have_xpath("//img[contains(@src,'nyan.jpg')]")
     expect(page).to have_link ('Meu perfil')
     expect(page).not_to have_link ('Completar perfil')
-    end
+  end
+
+  scenario 'candidate gets redirected to new profile when not completed' do
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+
+    login_as(candidate, scope: :candidate)
+
+    visit root_path
+
+    click_on 'Vagas disponíveis'
+
+
+    expect(current_path).to eq new_profile_path
+    expect(page).to have_content ('Complete seu perfil para ter acesso a todas as funcionalidades')
+  end
 
   scenario 'candidate edit profile' do
     candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)

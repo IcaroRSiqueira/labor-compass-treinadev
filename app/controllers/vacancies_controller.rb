@@ -1,5 +1,6 @@
 class VacanciesController < ApplicationController
   before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :redirect_candidate_to_new_profile, only: [:index, :show, :search]
 
   def index
     @vacancies = Vacancy.all
@@ -47,5 +48,13 @@ class VacanciesController < ApplicationController
   def vacancy_params
   params.require(:vacancy).permit(:title, :description, :skill, :wage, :role,
                                   :end_date, :location)
+  end
+
+  def redirect_candidate_to_new_profile
+    if candidate_signed_in?
+      unless current_candidate.complete?
+      redirect_to new_profile_path, notice: 'Complete seu perfil para ter acesso a todas as funcionalidades'
+      end
+    end
   end
 end

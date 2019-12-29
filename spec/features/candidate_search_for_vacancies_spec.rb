@@ -4,7 +4,7 @@ feature 'candidate search vacancy' do
   scenario 'successfully' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
     login_as(candidate, scope: :candidate)
     vacancy = Vacancy.create!(title: 'Entregador', description: 'Realizar entregas',
                     skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
@@ -27,7 +27,7 @@ feature 'candidate search vacancy' do
   scenario 'first letters only' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
     login_as(candidate, scope: :candidate)
     vacancy = Vacancy.create!(title: 'Entregador', description: 'Realizar entregas',
                     skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
