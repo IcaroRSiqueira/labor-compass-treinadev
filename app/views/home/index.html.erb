@@ -1,1 +1,25 @@
 <h1>Labor Compass<h1>
+  <p>Bem-vindo ao nosso portal para recrutamento e seleção de candidatos para vagas
+    oferecidas por empresas!</p><br>
+  <p>Através de nossos serviços você pode:</p>
+  <ul>
+    <li>Se você for um headhunter - Cadastrar e gerenciar vagas, receber aplicaçōes de candidatos e
+        enviar propostas!</li>
+    <li>Se você for um candidato a procura de um novo emprego - Pesquisar e visualizar vagas, aplicar-se às
+        vagas de seu interesse, receber propostas das empresas e após decidir qual a melhor proposta e aceitá-la!</li>
+  </ul>
+  <br>
+  <p>Para começar, basta se registrar como candidato/headhunter para ter os benefícios oferecidos pela
+     Labor Compass.</p>
+
+  <p>Possuimos agora:</p>
+  <ul>
+    <li><%= @headhunters.count %> empresa(s) cadastrada(s)</li>
+    <li><%= @candidates.count %> candidato(s) cadastrado(s)</li>
+    <li><%= @vacancies.avaiable.count %> vaga(s) disponível(is)</li>
+    <li>Em média, cada vaga cadastrada recebe <%= @apply_for_vacancy %> aplicaçōes</li>
+    <li>Em média, <%= @percent_proposal_for_apply %>% das aplicaçōes recebem propostas!</li>
+  </ul>
+<footer>
+  <p>2019, copyleft, São Paulo, Brasil</p>
+</footer>

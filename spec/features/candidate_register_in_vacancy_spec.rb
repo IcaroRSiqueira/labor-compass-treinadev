@@ -11,7 +11,7 @@ feature 'Candidate register on vacancy' do
                               experience: '3 anos de desenvolvimento back end em ruby', candidate: candidate)
     vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
                     skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter, status: :avaiable)
     login_as(candidate, scope: :candidate)
 
     visit root_path

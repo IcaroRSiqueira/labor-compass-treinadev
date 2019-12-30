@@ -12,4 +12,11 @@ class Vacancy < ApplicationRecord
       errors.add(:end_date, 'deve ser maior que data de fim')
     end
   end
+
+#  after_commit do
+#  delay(run_at: end_date + 1.day).expire!
+#  end
+#  def expire!
+#    finalized! unless finalized?
+#  end
 end

@@ -61,17 +61,17 @@ class VacanciesController < ApplicationController
   end
 
   def vacancy_expiration_index
-    @vacancies = Vacancy.all
-    @vacancies.each do |vacancy|
-      if Date.current > vacancy.end_date
-        vacancy.finalized!
-      end
-    end
-  end
-  def vacancy_expiration_show
-    @vacancy = Vacancy.find(params[:id])
-    if Date.current > @vacancy.end_date
-      @vacancy.finalized!
-    end
-  end
+   @vacancies = Vacancy.all
+   @vacancies.each do |vacancy|
+     if Date.current > vacancy.end_date
+       vacancy.finalized!
+     end
+   end
+ end
+ def vacancy_expiration_show
+   @vacancy = Vacancy.find(params[:id])
+   if Date.current > @vacancy.end_date
+     @vacancy.finalized!
+   end
+ end
 end
