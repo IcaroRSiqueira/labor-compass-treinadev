@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'time_helpers'
 
 feature 'Candidate view vacancies' do
   scenario 'from home page' do

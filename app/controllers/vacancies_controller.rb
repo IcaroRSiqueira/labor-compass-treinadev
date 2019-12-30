@@ -1,6 +1,8 @@
 class VacanciesController < ApplicationController
   before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy, :finalize]
   before_action :redirect_candidate_to_new_profile, only: [:index, :show, :search]
+  before_action :vacancy_expiration_show, only: [:show]
+  before_action :vacancy_expiration_index, only: [:index]
 
   def index
     @vacancies = Vacancy.all
@@ -55,6 +57,21 @@ class VacanciesController < ApplicationController
       unless current_candidate.complete?
       redirect_to new_profile_path, notice: 'Complete seu perfil para ter acesso a todas as funcionalidades'
       end
+    end
+  end
+
+  def vacancy_expiration_index
+    @vacancies = Vacancy.all
+    @vacancies.each do |vacancy|
+      if Date.current > vacancy.end_date
+        vacancy.finalized!
+      end
+    end
+  end
+  def vacancy_expiration_show
+    @vacancy = Vacancy.find(params[:id])
+    if Date.current > @vacancy.end_date
+      @vacancy.finalized!
     end
   end
 end
