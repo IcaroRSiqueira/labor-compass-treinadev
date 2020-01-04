@@ -75,4 +75,32 @@ feature 'Headhunter register vacancy' do
     expect(page).not_to have_link('Caçador de candidatos')
 
   end
+
+  scenario 'cant delete vacancy when there are entries' do
+    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
+                                    name: 'Teste Enterprises')
+    candidate = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
+    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
+                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
+                              description: 'Curso finalizado em 2010',
+                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
+    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
+                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
+                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+    entry = Entry.create!(candidate: candidate, vacancy: vacancy,
+                  description: 'Possuo bastante experiencia como desenvolvedor')
+
+
+    login_as(headhunter, scope: :headhunter)
+
+    visit root_path
+
+    click_on 'Minhas vagas'
+    click_on 'Desenvolvedor Web'
+    click_on 'Deletar vaga'
+
+    expect(page).to have_content('Não é possível deletar uma vaga que ja possui aplicações')
+    expect(page).to have_link('Desenvolvedor Web')
+
+  end
 end

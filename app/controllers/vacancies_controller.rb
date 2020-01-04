@@ -3,6 +3,8 @@ class VacanciesController < ApplicationController
   before_action :redirect_candidate_to_new_profile, only: [:index, :show, :search]
   before_action :vacancy_expiration_show, only: [:show]
   before_action :vacancy_expiration_index, only: [:index]
+  before_action :check_if_there_are_entries, only: [:destroy]
+
 
   def index
     @vacancies = Vacancy.all
@@ -72,6 +74,14 @@ class VacanciesController < ApplicationController
    @vacancy = Vacancy.find(params[:id])
    if Date.current > @vacancy.end_date
      @vacancy.finalized!
+   end
+ end
+
+ def check_if_there_are_entries
+   @vacancy = Vacancy.find(params[:id])
+   if @vacancy.entries.any?
+     flash[:notice] = 'Não é possível deletar uma vaga que ja possui aplicações'
+     redirect_to vacancies_path
    end
  end
 end
