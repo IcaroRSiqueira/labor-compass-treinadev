@@ -22,11 +22,11 @@ feature 'Candidate accept proposal' do
     Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional', headhunter: headhunter)
     Proposal.create!(entry: entry2, candidate: candidate, start_date: 30.day.from_now,
                      workload: 'Segunda a sexta-feira, das 8 as 16h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e convenio medico', wage: 'R$ 2000,00 ao mês',
-                     details: 'O analista deverá realizar os calculos e aplicaçōes de seguros, com possibilidade de trabalho Home Office')
+                     details: 'O analista deverá realizar os calculos e aplicaçōes de seguros, com possibilidade de trabalho Home Office', headhunter: headhunter)
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -61,7 +61,7 @@ feature 'Candidate accept proposal' do
     Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
 
     login_as(candidate, scope: :candidate)
 
@@ -96,7 +96,7 @@ feature 'Candidate accept proposal' do
     Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
 
     login_as(candidate, scope: :candidate)
 

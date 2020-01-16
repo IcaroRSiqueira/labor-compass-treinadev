@@ -19,7 +19,7 @@ RSpec.describe Proposal, type: :model do
       proposal = Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
                        workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                        benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa')
+                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
 
       proposal.valid?
 
@@ -42,7 +42,7 @@ RSpec.describe Proposal, type: :model do
       proposal = Proposal.create(entry: entry, candidate: candidate, start_date: 20.day.from_now,
                        workload: '',
                        benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa')
+                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
 
 
       proposal.valid?
@@ -66,7 +66,7 @@ RSpec.describe Proposal, type: :model do
       proposal = Proposal.create(entry: entry, candidate: candidate, start_date: '',
                        workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                        benefits: '', wage: '',
-                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa')
+                       details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
 
 
       proposal.valid?

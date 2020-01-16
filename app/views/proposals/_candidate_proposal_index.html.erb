@@ -1,5 +1,5 @@
 <dl>
-<% @proposals.each do |proposal| %>
+<% current_candidate.proposals.each do |proposal| %>
   <% if proposal.accepted? %>
     <dt>Status:</dt>
     <dd>Proposta aceita ✅</dd>

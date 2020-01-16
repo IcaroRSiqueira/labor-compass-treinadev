@@ -194,11 +194,11 @@ feature 'Index counter' do
     Proposal.create!(entry: entry1, candidate: candidate, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento', headhunter: headhunter)
     Proposal.create!(entry: entry2, candidate: candidate2, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento', headhunter: headhunter)
 
     visit root_path
 
@@ -227,7 +227,7 @@ feature 'Index counter' do
     Proposal.create!(entry: entry1, candidate: candidate, start_date: 20.day.from_now,
                      workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                      benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento')
+                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento', headhunter: headhunter)
 
     visit root_path
 

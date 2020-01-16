@@ -1,9 +1,9 @@
 <% if headhunter_signed_in? %>
   <h1>Propostas enviadas</h1>
-  <%= render partial: "proposal_index", locals: {proposals: @proposals} %>
+  <%= render partial: "headhunter_proposal_index", locals: {proposals: @proposals} %>
 <% end %>
 
 <% if candidate_signed_in? %>
   <h1>Propostas recebidas</h1>
- <%= render partial: "proposal_index", locals: {proposals: @proposals} %>
+ <%= render partial: "candidate_proposal_index", locals: {proposals: @proposals} %>
 <% end %>

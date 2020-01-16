@@ -28,12 +28,12 @@ feature 'Candidate accept proposal' do
                                  workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                                  benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
                                  details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional',
-                                 status: :refused)
+                                 status: :refused, headhunter: headhunter)
     proposal2= Proposal.create!(entry: entry2, candidate: candidate2, start_date: 30.day.from_now,
                                 workload: 'Segunda a sexta-feira, das 8 as 16h, totalizando 41 horas semanais',
                                 benefits: 'Vale transporte e convenio medico', wage: 'R$ 2000,00 ao mês',
                                 details: 'O analista deverá realizar os calculos e aplicaçōes de seguros, com possibilidade de trabalho Home Office',
-                                status: :accepted)
+                                status: :accepted, headhunter: headhunter)
     Report.create!(proposal: proposal1, body: 'Infelizmente a minha expecativa de salario esta acima da oferecida')
     Report.create!(proposal: proposal2, body: 'Telefone para contato: (00) 0-0000-0000)')
 

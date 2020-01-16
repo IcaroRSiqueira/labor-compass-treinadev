@@ -20,7 +20,7 @@ RSpec.describe Report, type: :model do
                                    workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                                    benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
                                    details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional',
-                                   status: :refused)
+                                   status: :refused, headhunter: headhunter)
       report = Report.create!(proposal: proposal1, body: 'Infelizmente a minha expecativa de salario esta acima da oferecida')
 
       report.valid?
@@ -45,7 +45,7 @@ RSpec.describe Report, type: :model do
                                    workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                                    benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
                                    details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional',
-                                   status: :refused)
+                                   status: :refused, headhunter: headhunter)
       report = Report.create!(proposal: proposal1, body: '')
 
       report.valid?
@@ -70,7 +70,7 @@ RSpec.describe Report, type: :model do
                                    workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                                    benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
                                    details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional',
-                                   status: :accepted)
+                                   status: :accepted, headhunter: headhunter)
       report = Report.create!(proposal: proposal1, body: 'Obrigado pela oportunidade')
 
       report.valid?
@@ -95,7 +95,7 @@ RSpec.describe Report, type: :model do
                                    workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
                                    benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
                                    details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional',
-                                   status: :accepted)
+                                   status: :accepted, headhunter: headhunter)
       report = Report.create!(proposal: proposal1, body: '')
 
       report.valid?

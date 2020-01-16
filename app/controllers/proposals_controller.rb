@@ -4,7 +4,9 @@ class ProposalsController < ApplicationController
 
 
   def index
-    @proposals = Proposal.all
+    if headhunter_signed_in?
+      current_headhunter.vacancies.each { |vacancy| @headhunter_entries = vacancy.entries }
+    end
   end
 
   def new
@@ -43,7 +45,7 @@ class ProposalsController < ApplicationController
 
   def proposals_params
     params.require(:proposal).permit(:start_date, :workload, :benefits,
-                                     :wage, :details).merge(candidate_id: @candidate.id)
+                                     :wage, :details).merge(candidate_id: @candidate.id, headhunter: current_headhunter)
 
   end
 end
