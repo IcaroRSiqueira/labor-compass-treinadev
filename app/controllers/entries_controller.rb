@@ -4,6 +4,9 @@ class EntriesController < ApplicationController
 
   def registered
     @entries = Entry.all
+    if candidate_signed_in?
+      @candidate_entries = current_candidate.entry.all
+    end
     @comment = Comment.new
     @candidate = current_candidate
   end

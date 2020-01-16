@@ -1,7 +1,7 @@
 <% if candidate_signed_in? %>
   <h1>Minhas vagas</h1>
   <dl>
-  <% @entries.each do |entry| %>
+  <% @candidate_entries.each do |entry| %>
     <% if entry.avaiable? %>
       <dt>Status:</dt>
       <dd>Aguardando resposta</dd>
