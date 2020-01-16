@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   before_action :authenticate_candidate!
 
   def positive
-    @proposals = Proposal.all
+    @proposals = current_candidate.proposals.all
     @proposal = Proposal.find(params[:id])
     @report = @proposal.create_report(report_params)
     @report.save!

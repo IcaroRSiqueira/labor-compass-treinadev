@@ -4,9 +4,6 @@ class ProposalsController < ApplicationController
 
 
   def index
-    if headhunter_signed_in?
-      current_headhunter.vacancies.each { |vacancy| @headhunter_entries = vacancy.entries }
-    end
   end
 
   def new
