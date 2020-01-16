@@ -7,6 +7,9 @@ class VacanciesController < ApplicationController
 
 
   def index
+    if headhunter_signed_in?
+      @headhunter_vacancies = current_headhunter.vacancies.all
+    end
     @vacancies = Vacancy.all
   end
 

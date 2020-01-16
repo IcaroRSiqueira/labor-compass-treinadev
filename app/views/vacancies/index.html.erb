@@ -37,7 +37,7 @@
 
 <% if headhunter_signed_in? %>
 <dl>
-  <% @vacancies.each do |vacancy| %>
+  <% @headhunter_vacancies.each do |vacancy| %>
     <%if vacancy.finalized? %>
       <p>Status: Inscrições encerradas</p>
     <% elsif vacancy.avaiable? %>

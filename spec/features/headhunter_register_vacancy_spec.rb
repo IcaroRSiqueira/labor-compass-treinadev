@@ -76,6 +76,30 @@ feature 'Headhunter register vacancy' do
 
   end
 
+  scenario 'must not see other headhunter vacancies' do
+    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
+                                    name: 'Teste Enterprises')
+    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
+                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
+                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+    headhunter2 = Headhunter.create!(email: 'test2@test.com', password: '123456',
+                                    name: 'Second Test')
+    vacancy2 = Vacancy.create!(title: 'Gerente de projetos', description: 'Gerenciar equipes em projetos',
+                    skill: 'Experiencia com processos gerenciais', wage: '4500', role: 'Pleno',
+                    end_date: 20.day.from_now, location: 'Av Rebouças', headhunter: headhunter2, status: :avaiable)
+
+    login_as(headhunter, scope: :headhunter)
+
+    visit root_path
+
+    click_on 'Minhas vagas'
+
+    expect(page).to have_content(vacancy.title)
+    expect(page).to have_content(vacancy.description)
+    expect(page).not_to have_content(vacancy2.title)
+    expect(page).not_to have_content(vacancy2.description)
+  end
+
   scenario 'cant delete vacancy when there are entries' do
     headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
                                     name: 'Teste Enterprises')
