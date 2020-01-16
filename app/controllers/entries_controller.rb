@@ -3,9 +3,10 @@ class EntriesController < ApplicationController
   before_action :authenticate_candidate!, only: [:apply]
 
   def registered
-    @entries = Entry.all
     if candidate_signed_in?
       @candidate_entries = current_candidate.entry.all
+    elsif headhunter_signed_in?
+      current_headhunter.vacancies.each { |vacancy| @headhunter_entries = vacancy.entries }
     end
     @comment = Comment.new
     @candidate = current_candidate

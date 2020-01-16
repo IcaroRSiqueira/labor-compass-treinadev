@@ -35,7 +35,7 @@
 <% if headhunter_signed_in? %>
   <h1>Aplicaçōes para vagas</h1>
   <dl>
-  <% @entries.each do |entry| %>
+  <% @headhunter_entries.each do |entry| %>
     <%if entry.featured? %>
       <p>⭐</p>
     <% end %>
