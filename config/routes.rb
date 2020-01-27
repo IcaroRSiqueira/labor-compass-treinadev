@@ -30,4 +30,9 @@ Rails.application.routes.draw do
     post 'positive', on: :member
     post 'negative', on: :member
   end
+  namespace :api do
+    namespace :v1 do
+      resources :vacancies, only: %i[show]
+    end
+  end
 end
