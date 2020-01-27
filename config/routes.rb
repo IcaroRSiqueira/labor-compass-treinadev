@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-      resources :vacancies, only: %i[show]
+      resources :vacancies, only: %i[show index]
     end
   end
 end
