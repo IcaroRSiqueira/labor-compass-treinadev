@@ -18,7 +18,7 @@ feature 'Headhunter sign in' do
     end
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Signed in successfully")
+    expect(page).to have_content("Login efetuado com sucesso")
     expect(page).to have_link ('Sair')
     expect(page).not_to have_link ('Entrar como Headhunter')
 
@@ -40,7 +40,7 @@ feature 'Headhunter sign in' do
     click_on 'Sair'
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Signed out successfully")
+    expect(page).to have_content('Logout efetuado com sucesso')
     expect(page).to have_link ('Entrar como Headhunter')
     expect(page).not_to have_link ('Sair')
   end

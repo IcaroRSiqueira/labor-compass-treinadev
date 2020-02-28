@@ -1,15 +1,14 @@
 require 'rails_helper'
 
-feature 'Headhunter register account' do
+feature 'Candidate register account' do
   scenario 'from home page' do
 
     visit root_path
 
-    click_on 'Entrar como Headhunter'
+    click_on 'Entrar como Candidato'
     click_on 'Inscreva-se aqui'
 
     fill_in 'Email', with: 'test@test.com'
-    fill_in 'Nome da Empresa', with: 'Teste Enterprises'
     fill_in 'Senha', with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
 
@@ -18,20 +17,19 @@ feature 'Headhunter register account' do
     end
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
     expect(page).to have_link ('Sair')
-    expect(page).not_to have_link ('Entrar como Headhunter')
+    expect(page).not_to have_link ('Entrar como Candidato')
   end
 
-  scenario 'from home page' do
+  scenario 'must fill in all fields' do
 
     visit root_path
 
-    click_on 'Entrar como Headhunter'
+    click_on 'Entrar como Candidato'
     click_on 'Inscreva-se aqui'
 
     fill_in 'Email', with: ''
-    fill_in 'Nome da Empresa', with: 'Teste Enterprises'
     fill_in 'Senha', with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
 
@@ -39,6 +37,6 @@ feature 'Headhunter register account' do
       click_on 'Registrar'
     end
 
-    expect(page).to have_content("can't be blank")
+    expect(page).to have_content('Email não pode ficar em branco')
   end
 end
