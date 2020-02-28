@@ -68,11 +68,13 @@
       <% end %>
     <% end %>
 
+
     <%= form_with model: @comment, url: post_comment_path(entry), method: :post do |f| %>
       <%= f.label :body, 'Comente este perfil' %>
       <%= f.text_field :body %>
       <%= f.submit 'Enviar comentário' %>
     <% end %>
+    
     <% unless entry.rejected? %>
       <% unless entry.featured? %>
         <p><%= link_to 'Marcar perfil como destaque', feature_entry_path(entry), method: :post %></p>

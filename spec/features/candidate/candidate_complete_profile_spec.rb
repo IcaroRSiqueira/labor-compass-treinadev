@@ -99,6 +99,7 @@ feature 'Candidate complete profile' do
       click_on 'Registrar perfil'
     end
 
-    expect(page).to have_content('não pode ficar em branco')
+    expect(page).to have_content('Nome completo não pode ficar em branco')
+    expect(page).to have_content('Data de nascimento não pode ficar em branco')
     end
   end

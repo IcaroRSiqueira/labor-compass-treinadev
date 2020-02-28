@@ -40,7 +40,7 @@ RSpec.describe Feedback, type: :model do
 
       feedback.valid?
 
-      expect(feedback.errors.full_messages).to include 'Body não pode ficar em branco'
+      expect(feedback.errors.full_messages).to include 'Texto do feedback não pode ficar em branco'
     end
   end
 end

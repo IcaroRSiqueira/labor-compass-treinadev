@@ -1,15 +1,24 @@
 <h3>Enviar proposta ao usuário</h3>
 
+<% if @proposal.errors.any? %>
+  <p>Você deve corrigir os seguintes erros:</p>
+  <ul>
+  <% @proposal.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @proposal, url: entry_proposals_path(@entry) do |f| %>
-  <%= f.label :start_date, 'Data prevista para início' %>
+  <%= f.label :start_date %>
   <%= f.date_field :start_date %>
-  <%= f.label :workload, 'Carga horária' %>
+  <%= f.label :workload %>
   <%= f.text_field :workload %>
-  <%= f.label :benefits, 'Benefícios' %>
+  <%= f.label :benefits %>
   <%= f.text_field :benefits %>
-  <%= f.label :wage, 'Salário' %>
+  <%= f.label :wage %>
   <%= f.text_field :wage %>
-  <%= f.label :details, 'Detalhes' %>
+  <%= f.label :details %>
   <%= f.text_area :details %>
   <%= f.submit 'Enviar proposta' %>
 <% end %>

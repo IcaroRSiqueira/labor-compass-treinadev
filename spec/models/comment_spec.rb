@@ -40,7 +40,7 @@ RSpec.describe Comment, type: :model do
 
       comment.valid?
 
-      expect(comment.errors.full_messages).to include 'Body não pode ficar em branco'
+      expect(comment.errors.full_messages).to include 'Texto do comentário não pode ficar em branco'
     end
   end
 end

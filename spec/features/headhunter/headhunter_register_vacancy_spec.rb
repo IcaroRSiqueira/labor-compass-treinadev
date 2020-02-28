@@ -14,10 +14,10 @@ feature 'Headhunter register vacancy' do
     fill_in 'Descrição', with: 'O funcionário deverá pesquisar por perfis de
                                 possíveis futuros funcionários'
     fill_in 'Habilidades necessárias', with: 'Bom relacionamento interpessoal'
-    fill_in 'Faixa salarial', with: '2500-3000'
-    fill_in 'Nível do cargo', with: 'Pleno'
-    fill_in 'Data limite de inscriçōes', with: 10.day.from_now
-    fill_in 'Região', with: 'Av. Faria Lima'
+    fill_in 'Salário', with: '2500-3000'
+    fill_in 'Função', with: 'Pleno'
+    fill_in 'Data de término', with: 10.day.from_now
+    fill_in 'Localização', with: 'Av. Faria Lima'
     click_on 'Registrar vaga'
 
 
@@ -45,10 +45,10 @@ feature 'Headhunter register vacancy' do
     fill_in 'Descrição', with: 'O funcionário deverá pesquisar por perfis de
                                 possíveis futuros funcionários'
     fill_in 'Habilidades necessárias', with: 'Bom relacionamento interpessoal'
-    fill_in 'Faixa salarial', with: '2500-3000'
-    fill_in 'Nível do cargo', with: 'Pleno'
-    fill_in 'Data limite de inscriçōes', with: 10.day.from_now
-    fill_in 'Região', with: 'Av. Faria Lima'
+    fill_in 'Salário', with: '2500-3000'
+    fill_in 'Função', with: 'Pleno'
+    fill_in 'Data de término', with: 10.day.from_now
+    fill_in 'Localização', with: 'Av. Faria Lima'
     click_on 'Registrar vaga'
 
 

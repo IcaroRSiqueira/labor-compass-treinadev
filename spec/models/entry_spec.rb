@@ -37,7 +37,7 @@ RSpec.describe Entry, type: :model do
 
       entry.valid?
 
-      expect(entry.errors.full_messages).to include 'Description não pode ficar em branco'
+      expect(entry.errors.full_messages).to include 'Sua descrição não pode ficar em branco'
     end
 
 
@@ -57,7 +57,7 @@ RSpec.describe Entry, type: :model do
 
       entry.valid?
 
-      expect(entry.errors.full_messages).to include 'Description não pode ficar em branco'
+      expect(entry.errors.full_messages).to include 'Sua descrição não pode ficar em branco'
     end
   end
 end

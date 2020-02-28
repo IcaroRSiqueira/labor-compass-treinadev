@@ -27,7 +27,7 @@ RSpec.describe Vacancy, type: :model do
 
       vacancy.valid?
 
-      expect(vacancy.errors.full_messages).to include 'End date deve ser maior que data de fim'
+      expect(vacancy.errors.full_messages).to include 'Data de término deve ser maior que data de fim'
     end
 
     it 'end date less than start date' do
@@ -41,7 +41,7 @@ RSpec.describe Vacancy, type: :model do
 
       vacancy.valid?
 
-      expect(vacancy.errors.full_messages).to include 'End date deve ser maior que data de fim'
+      expect(vacancy.errors.full_messages).to include 'Data de término deve ser maior que data de fim'
     end
 
     it 'end date less than start date' do
@@ -55,7 +55,7 @@ RSpec.describe Vacancy, type: :model do
 
       vacancy.valid?
 
-      expect(vacancy.errors.full_messages).to include 'End date deve ser maior que data de fim'
+      expect(vacancy.errors.full_messages).to include 'Data de término deve ser maior que data de fim'
     end
 
   xdescribe '.vacancy_expiration' do

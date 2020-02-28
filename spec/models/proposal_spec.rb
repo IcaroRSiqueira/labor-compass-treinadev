@@ -47,7 +47,7 @@ RSpec.describe Proposal, type: :model do
 
       proposal.valid?
 
-      expect(proposal.errors.full_messages).to include 'Workload não pode ficar em branco'
+      expect(proposal.errors.full_messages).to include 'Carga horária não pode ficar em branco'
     end
 
     it 'must fill all fields' do
@@ -71,9 +71,9 @@ RSpec.describe Proposal, type: :model do
 
       proposal.valid?
 
-      expect(proposal.errors.full_messages).to include "Start date não pode ficar em branco",
-                                                      "Benefits não pode ficar em branco",
-                                                      "Wage não pode ficar em branco"
+      expect(proposal.errors.full_messages).to include "Data prevista para início não pode ficar em branco",
+                                                      "Benefícios não pode ficar em branco",
+                                                      "Salário não pode ficar em branco"
     end
   end
 end

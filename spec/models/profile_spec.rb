@@ -25,7 +25,7 @@ RSpec.describe Profile, type: :model do
 
       profile.valid?
 
-      expect(profile.errors.full_messages).to include 'Full name não pode ficar em branco'
+      expect(profile.errors.full_messages).to include 'Nome completo não pode ficar em branco'
     end
 
     it 'must fill all fields' do
@@ -38,9 +38,9 @@ RSpec.describe Profile, type: :model do
 
       profile.valid?
 
-      expect(profile.errors.full_messages).to include "Full name não pode ficar em branco",
-                                                      "Social name não pode ficar em branco",
-                                                      "Description não pode ficar em branco"
+      expect(profile.errors.full_messages).to include "Nome completo não pode ficar em branco",
+                                                      "Nome social não pode ficar em branco",
+                                                      "Descrição não pode ficar em branco"
     end
   end
 end

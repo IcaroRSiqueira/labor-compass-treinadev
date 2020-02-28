@@ -1,6 +1,6 @@
 class Vacancy < ApplicationRecord
   validates :title, :description, :skill, :wage, :role, :end_date, :location,
-            presence: {message: 'não pode ficar em branco'}
+            presence: true
   validate :end_date_must_be_greater_than_today
   belongs_to :headhunter
   has_many :entries

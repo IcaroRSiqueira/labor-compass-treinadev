@@ -127,7 +127,7 @@ feature 'Candidate register on vacancy' do
     click_on 'Aplicar-se à vaga'
 
 
-      expect(page).to have_content('não pode ficar em branco')
+      expect(page).to have_content('Sua descrição não pode ficar em branco')
       expect(page).to have_content('Conte-nos mais sobre você!')
   end
 end

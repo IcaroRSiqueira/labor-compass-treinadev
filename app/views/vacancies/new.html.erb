@@ -10,19 +10,19 @@
 <% end %>
 
 <%= form_with model: @vacancy, local: true do |f| %>
-  <%= f.label :title, 'Título' %>
+  <%= f.label :title %>
   <%= f.text_field :title %>
-  <%= f.label :description, 'Descrição' %>
+  <%= f.label :description %>
   <%= f.text_field :description %>
-  <%= f.label :skill, 'Habilidades necessárias' %>
+  <%= f.label :skill %>
   <%= f.text_field :skill %>
-  <%= f.label :wage, 'Faixa salarial' %>
+  <%= f.label :wage %>
   <%= f.text_field :wage %>
-  <%= f.label :role, 'Nível do cargo' %>
+  <%= f.label :role %>
   <%= f.text_field :role %>
-  <%= f.label :end_date, 'Data limite de inscriçōes' %>
+  <%= f.label :end_date %>
   <%= f.date_field :end_date %>
-  <%= f.label :location, 'Região' %>
+  <%= f.label :location %>
   <%= f.text_field :location %>
   <%= f.submit 'Registrar vaga' %>
 <% end %>

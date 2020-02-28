@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    attributes:
+      comment:
+        body: Texto do comentário
+        comment_date: Data

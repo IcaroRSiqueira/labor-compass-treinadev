@@ -17,8 +17,12 @@ class ProposalsController < ApplicationController
       @headhunter = current_headhunter
       @candidate = @entry.candidate
       @proposal = @entry.create_proposal(proposals_params)
-      @proposal.avaiable!
-      redirect_to entry_proposals_path, notice: 'Proposta enviada!'
+      if @proposal.save
+        @proposal.avaiable!
+        redirect_to entry_proposals_path, notice: 'Proposta enviada!'
+      else
+        render :new
+      end
     elsif @entry.proposal.present?
       redirect_to entry_proposals_path, notice: 'Você ja enviou uma proposta para esta aplicação'
     end

@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    attributes:
+      proposal:
+        start_date: Data prevista para início
+        workload: Carga horária
+        benefits: Benefícios
+        wage: Salário
+        role: Função
+        details: Detalhes

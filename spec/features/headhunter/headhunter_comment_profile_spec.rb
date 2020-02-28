@@ -57,6 +57,6 @@ feature 'Headhunter comment profile' do
     click_on 'Enviar comentário'
 
     expect(page).not_to have_content('Comentários do anunciante')
-
+    expect(page).not_to have_content('Comentário enviado')
   end
 end
