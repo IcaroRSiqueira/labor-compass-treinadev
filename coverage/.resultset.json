@@ -150,6 +150,7 @@
         0,
         null,
         1,
+        1,
         null,
         null,
         1,
@@ -702,6 +703,50 @@
         null,
         null,
         null,
+        null,
+        null
+      ],
+      "/Users/icaro/Workspace/labor-compass-treinadev/spec/factories/candidate.rb": [
+        1,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/icaro/Workspace/labor-compass-treinadev/spec/factories/headhunter.rb": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/icaro/Workspace/labor-compass-treinadev/spec/factories/profile.rb": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        null,
+        null
+      ],
+      "/Users/icaro/Workspace/labor-compass-treinadev/spec/factories/vacancy.rb": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
         null,
         null
       ],
@@ -1343,15 +1388,8 @@
         1,
         1,
         1,
-        null,
         1,
         1,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
         1,
         null,
         1,
@@ -3400,6 +3438,6 @@
         null
       ]
     },
-    "timestamp": 1582920257
+    "timestamp": 1583175340
   }
 }

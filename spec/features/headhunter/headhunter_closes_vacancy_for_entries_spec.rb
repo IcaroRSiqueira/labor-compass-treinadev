@@ -2,16 +2,9 @@ require 'rails_helper'
 
 feature 'Headhunter closes vacancy' do
   scenario 'from home page' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Jose Silva', social_name: 'Jose Silva',
-                              birth_date: '12/12/1990', education: 'Graduação em ADS pela FMU',
-                              description: 'Curso finalizado em 2015',
-                              experience: '3 anos de desenvolvimento back end em ruby', candidate: candidate)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+    headhunter = create(:headhunter)
+    create(:profile)
+    vacancy = create(:vacancy, title: 'Motorista de limosine', headhunter: headhunter)
     login_as(headhunter, scope: :headhunter)
 
     visit root_path
@@ -22,7 +15,7 @@ feature 'Headhunter closes vacancy' do
 
 
     expect(page).to have_content("Vaga encerrada com sucesso")
-    expect(page).to have_content("Desenvolvedor Web")
+    expect(page).to have_content("Motorista de limosine")
     expect(page).to have_content("Desenvilvimento de paginas web com ruby on rails")
     expect(page).to have_content("Status: Inscrições encerradas")
     expect(page).not_to have_content("Status: Inscrições abertas")
