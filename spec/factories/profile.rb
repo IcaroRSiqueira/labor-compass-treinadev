@@ -6,6 +6,9 @@ FactoryBot.define do
     education { 'Graduação em ADS pela FMU' }
     description { 'Curso finalizado em 2015' }
     experience { '3 anos de desenvolvimento back end em ruby' }
-    candidate 
+    candidate
+    trait :with_avatar do
+      avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'nyan.jpg'), 'image/jpg') }
+    end
   end
 end
