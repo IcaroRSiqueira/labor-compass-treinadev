@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Headhunter register vacancy' do
   scenario 'from home page' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
+    headhunter = create(:headhunter)
+
 
     login_as(headhunter, scope: :headhunter)
     visit root_path
@@ -32,8 +32,8 @@ feature 'Headhunter register vacancy' do
   end
 
   scenario 'Must fill in all fields' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste.inc')
+    headhunter = create(:headhunter)
+
 
     login_as(headhunter, scope: :headhunter)
 
@@ -56,12 +56,9 @@ feature 'Headhunter register vacancy' do
   end
 
   scenario 'delete vacancy' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste.inc')
-    Vacancy.create!(title: 'Caçador de candidatos', description: 'O funcionário
-                    deverá pesquisar por perfis de possíveis futuros funcionários',
-                    skill: 'Bom relacionamento interpessoal', wage: '2500-3000',
-                    role: 'Pleno', end_date: 10.day.from_now, location: 'Av. Faria Lima', headhunter: headhunter)
+    headhunter = create(:headhunter)
+
+    create(:vacancy, headhunter: headhunter, title: 'Caçador de candidatos')
 
     login_as(headhunter, scope: :headhunter)
 
@@ -77,16 +74,10 @@ feature 'Headhunter register vacancy' do
   end
 
   scenario 'must not see other headhunter vacancies' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    headhunter2 = Headhunter.create!(email: 'test2@test.com', password: '123456',
-                                    name: 'Second Test')
-    vacancy2 = Vacancy.create!(title: 'Gerente de projetos', description: 'Gerenciar equipes em projetos',
-                    skill: 'Experiencia com processos gerenciais', wage: '4500', role: 'Pleno',
-                    end_date: 20.day.from_now, location: 'Av Rebouças', headhunter: headhunter2, status: :avaiable)
+    headhunter = create(:headhunter)
+    create(:vacancy, headhunter: headhunter, title: 'Caçador de candidatos', description: 'Finder de candidatos')
+    headhunter2 = create(:headhunter, email: 'headhunter2@test.com', name: 'inc')
+    create(:vacancy, headhunter: headhunter2, title: 'Headhunter Seeker', description: 'Procurador de headhunters')
 
     login_as(headhunter, scope: :headhunter)
 
@@ -94,25 +85,18 @@ feature 'Headhunter register vacancy' do
 
     click_on 'Minhas vagas'
 
-    expect(page).to have_content(vacancy.title)
-    expect(page).to have_content(vacancy.description)
-    expect(page).not_to have_content(vacancy2.title)
-    expect(page).not_to have_content(vacancy2.description)
+    expect(page).to have_content('Caçador de candidatos')
+    expect(page).to have_content('Finder de candidatos')
+    expect(page).not_to have_content('Headhunter Seeker')
+    expect(page).not_to have_content('Procurador de headhunters')
   end
 
   scenario 'cant delete vacancy when there are entries' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    entry = Entry.create!(candidate: candidate, vacancy: vacancy,
-                  description: 'Possuo bastante experiencia como desenvolvedor')
+    headhunter = create(:headhunter)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor Web')
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate, social_name: 'Leticia Silva')
+    create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência')
 
 
     login_as(headhunter, scope: :headhunter)
@@ -125,6 +109,5 @@ feature 'Headhunter register vacancy' do
 
     expect(page).to have_content('Não é possível deletar uma vaga que ja possui aplicações')
     expect(page).to have_link('Desenvolvedor Web')
-
   end
 end

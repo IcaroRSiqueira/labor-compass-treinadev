@@ -2,18 +2,11 @@ require 'rails_helper'
 
 feature 'Headhunter rejects candidates' do
   scenario 'from home page' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate1 = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile1 = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate1)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    Entry.create!(candidate: candidate1, vacancy: vacancy,
-                         description: 'Possuo bastante experiencia como desenvolvedor')
+    headhunter = create(:headhunter)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate, social_name: 'Leticia Silva')
+    create(:entry, candidate: candidate, vacancy: vacancy)
 
     login_as(headhunter, scope: :headhunter)
 
@@ -26,25 +19,18 @@ feature 'Headhunter rejects candidates' do
 
     expect(page).to have_content("Candidato rejeitado com sucesso")
     expect(page).to have_content("Infelizmente o perfil não supriu as necessidades da vaga")
-    expect(page).to have_content("Desenvolvedor Web")
-    expect(page).to have_content("Junior Silva")
+    expect(page).to have_content("Desenvolvedor")
+    expect(page).to have_content("Leticia Silva")
     expect(page).not_to have_link("Rejeitar participação")
     expect(page).not_to have_link("Marcar perfil como destaque")
   end
 
   scenario 'Must fill in feedback' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate1 = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile1 = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate1)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    Entry.create!(candidate: candidate1, vacancy: vacancy,
-                         description: 'Possuo bastante experiencia como desenvolvedor')
+    headhunter = create(:headhunter)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate, social_name: 'Leticia Silva')
+    create(:entry, candidate: candidate, vacancy: vacancy)
 
     login_as(headhunter, scope: :headhunter)
 

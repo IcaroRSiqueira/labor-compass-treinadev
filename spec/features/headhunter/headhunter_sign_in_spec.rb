@@ -3,8 +3,7 @@ require 'rails_helper'
 feature 'Headhunter sign in' do
   scenario 'from home page' do
 
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
+    headhunter = create(:headhunter)
 
     visit root_path
 
@@ -26,8 +25,7 @@ feature 'Headhunter sign in' do
 
   scenario 'Headhunter sign out' do
 
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                      name: 'Teste Enterprises')
+    headhunter = create(:headhunter)
 
     visit root_path
 
