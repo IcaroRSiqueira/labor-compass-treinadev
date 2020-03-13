@@ -3,16 +3,17 @@ require 'time_helpers'
 
 feature 'Candidate view vacancies' do
   scenario 'from home page' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
-    login_as(candidate, scope: :candidate)
-    Vacancy.create!(title: 'Entregador', description: 'Realizar entregas',
+
+    headhunter = create(:headhunter)
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate)
+    create(:vacancy, headhunter: headhunter, title: 'Entregador', description: 'Realizar entregas',
                     skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
-                    end_date: 10.day.from_now, location: 'Rua Augusta', headhunter: headhunter)
-    Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
+                    end_date: 10.day.from_now, location: 'Rua Augusta')
+    create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
                     skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
+                    end_date: 15.day.from_now, location: 'Av Paulista')
+    login_as(candidate, scope: :candidate)
 
     visit root_path
 
@@ -35,9 +36,9 @@ feature 'Candidate view vacancies' do
   end
 
   scenario 'no vacancies message' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
+
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate)
     login_as(candidate, scope: :candidate)
 
     visit root_path

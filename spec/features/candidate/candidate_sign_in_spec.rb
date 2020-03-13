@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Candidate sign in' do
   scenario 'from home page' do
 
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = create(:candidate)
 
     visit root_path
 
@@ -25,7 +25,7 @@ feature 'Candidate sign in' do
 
   scenario 'Candidate sign out' do
 
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = create(:candidate)
 
     visit root_path
 

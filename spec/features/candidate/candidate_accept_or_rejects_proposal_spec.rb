@@ -2,31 +2,15 @@ require 'rails_helper'
 
 feature 'Candidate accept proposal' do
   scenario 'from home page' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    vacancy2 = Vacancy.create!(title: 'Corretor de seguro', description: 'Analise e calculo base de valores de seguro',
-                              skill: 'Experiencia com calculos de seguro', wage: '2000', role: 'Pleno',
-                              end_date: 20.day.from_now, location: 'Av Rebouças', headhunter: headhunter)
-    entry = Entry.create!(candidate: candidate, vacancy: vacancy,
-                          description: 'Possuo bastante experiencia como desenvolvedor')
-    entry2 = Entry.create!(candidate: candidate, vacancy: vacancy2,
-                           description: 'Possuo pouca experiencia com ciencias atuariais')
-    Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
-                     workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
-                     benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional', headhunter: headhunter)
-    Proposal.create!(entry: entry2, candidate: candidate, start_date: 30.day.from_now,
-                     workload: 'Segunda a sexta-feira, das 8 as 16h, totalizando 41 horas semanais',
-                     benefits: 'Vale transporte e convenio medico', wage: 'R$ 2000,00 ao mês',
-                     details: 'O analista deverá realizar os calculos e aplicaçōes de seguros, com possibilidade de trabalho Home Office', headhunter: headhunter)
+    headhunter = create(:headhunter)
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
+    vacancy2 = create(:vacancy, headhunter: headhunter, title: 'Motorista')
+    entry = create(:entry, candidate: candidate, vacancy: vacancy)
+    entry2 = create(:entry, candidate: candidate, vacancy: vacancy2)
+    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    proposal2 = create(:proposal, entry: entry2, candidate: candidate, headhunter: headhunter)
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -46,22 +30,13 @@ feature 'Candidate accept proposal' do
 
 
   scenario 'candidate rejects proposal' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    entry = Entry.create!(candidate: candidate, vacancy: vacancy,
-                  description: 'Possuo bastante experiencia como desenvolvedor', status: :rejected)
-    Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
-                     workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
-                     benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
+    headhunter = create(:headhunter)
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
+    entry = create(:entry, candidate: candidate, vacancy: vacancy)
+    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    login_as(candidate, scope: :candidate)
 
     login_as(candidate, scope: :candidate)
 
@@ -74,29 +49,19 @@ feature 'Candidate accept proposal' do
     click_on 'Confirmar rejeição da proposta'
 
     expect(page).to have_content("Proposta rejeitada com sucesso")
-    expect(page).not_to have_content("Status: Proposta aceita")
     expect(page).to have_content("Status: Proposta recusada")
     expect(page).to have_content("Infelizmente o salario nao é compativel com minha expectativa")
+    expect(page).not_to have_content("Status: Proposta aceita")
     expect(page).not_to have_content("Status: Aguardando resposta")
   end
 
   scenario 'candidate returns to proposals index' do
-    headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
-                                    name: 'Teste Enterprises')
-    candidate = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
-    vacancy = Vacancy.create!(title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista', headhunter: headhunter)
-    entry = Entry.create!(candidate: candidate, vacancy: vacancy,
-                  description: 'Possuo bastante experiencia como desenvolvedor', status: :rejected)
-    Proposal.create!(entry: entry, candidate: candidate, start_date: 20.day.from_now,
-                     workload: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais',
-                     benefits: 'Vale transporte e alimentação', wage: 'R$ 3000,00 ao mês',
-                     details: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa', headhunter: headhunter)
+    headhunter = create(:headhunter)
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate)
+    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
+    entry = create(:entry, candidate: candidate, vacancy: vacancy)
+    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
 
     login_as(candidate, scope: :candidate)
 

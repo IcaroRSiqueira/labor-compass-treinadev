@@ -2,8 +2,7 @@ require 'rails_helper'
 
 feature 'Candidate complete profile' do
   scenario 'from home page' do
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
-
+    candidate = create(:candidate)
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -35,7 +34,7 @@ feature 'Candidate complete profile' do
   end
 
   scenario 'candidate gets redirected to new profile when not completed' do
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as(candidate, scope: :candidate)
 
@@ -49,11 +48,9 @@ feature 'Candidate complete profile' do
   end
 
   scenario 'candidate edit profile' do
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456', status: :complete)
-    profile = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
-                              description: 'Curso finalizado em 2010',
-                              experience: '5 anos de desenvolvimento front end em ruby e java', candidate: candidate)
+    candidate = create(:candidate, status: :complete)
+    create(:profile, candidate: candidate, full_name: 'Junior Silva', social_name: 'Leticia Silva',
+                              birth_date: '13/12/1985')
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -72,14 +69,11 @@ feature 'Candidate complete profile' do
     expect(page).to have_content ('Junior Silva')
     expect(page).to have_content ('Leticia Silva')
     expect(page).to have_content ('13/12/1985')
-    expect(page).to have_content ('Graduação em ADS pela USP e pós doutorado em ciências de dados')
-    expect(page).to have_content ('Curso finalizado em 2010')
-    expect(page).to have_content ('5 anos de desenvolvimento front end em ruby e java')
     expect(page).to have_xpath("//img[contains(@src,'nyan.jpg')]")
   end
 
   scenario 'must fill in obrigatory fields' do
-    candidate = Candidate.create!(email: 'test@test.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as(candidate, scope: :candidate)
 
