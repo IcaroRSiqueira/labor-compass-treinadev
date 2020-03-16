@@ -12,7 +12,6 @@ feature 'Headhunter closes vacancy' do
     click_on vacancy.title
     click_on 'Encerrar inscrições para esta vaga'
 
-
     expect(page).to have_content("Vaga encerrada com sucesso")
     expect(page).to have_content("Motorista de limosine")
     expect(page).to have_content("Desenvilvimento de paginas web com ruby on rails")
@@ -28,7 +27,6 @@ feature 'Headhunter closes vacancy' do
     visit root_path
 
     click_on 'Vagas disponíveis'
-
 
     expect(page).to have_content("Nenhuma vaga disponível no momento")
     expect(page).not_to have_content("Desenvolvedor Web")

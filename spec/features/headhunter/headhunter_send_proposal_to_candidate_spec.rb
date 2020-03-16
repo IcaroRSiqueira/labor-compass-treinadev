@@ -25,8 +25,6 @@ feature 'Headhunter send proposal to candidate' do
     expect(page).to have_link("Desenvolvedor")
     expect(page).to have_content("Leticia Silva")
     expect(page).to have_content("Status: Aguardando resposta")
-
-
   end
   scenario 'Must fill in all fields' do
     headhunter = create(:headhunter)

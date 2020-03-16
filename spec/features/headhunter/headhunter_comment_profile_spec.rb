@@ -28,7 +28,7 @@ feature 'Headhunter comment profile' do
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
     create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência')
-    
+
     login_as(headhunter, scope: :headhunter)
 
     visit root_path

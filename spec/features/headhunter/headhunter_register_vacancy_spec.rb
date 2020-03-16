@@ -4,7 +4,6 @@ feature 'Headhunter register vacancy' do
   scenario 'from home page' do
     headhunter = create(:headhunter)
 
-
     login_as(headhunter, scope: :headhunter)
     visit root_path
 
@@ -20,7 +19,6 @@ feature 'Headhunter register vacancy' do
     fill_in 'Localização', with: 'Av. Faria Lima'
     click_on 'Registrar vaga'
 
-
     expect(page).to have_content("Vaga cadastrada com sucesso")
     expect(page).to have_content("Caçador de candidatos")
     expect(page).to have_content("O funcionário deverá pesquisar por perfis de possíveis futuros funcionários")
@@ -33,7 +31,6 @@ feature 'Headhunter register vacancy' do
 
   scenario 'Must fill in all fields' do
     headhunter = create(:headhunter)
-
 
     login_as(headhunter, scope: :headhunter)
 
@@ -50,7 +47,6 @@ feature 'Headhunter register vacancy' do
     fill_in 'Data de término', with: 10.day.from_now
     fill_in 'Localização', with: 'Av. Faria Lima'
     click_on 'Registrar vaga'
-
 
     expect(page).to have_content('não pode ficar em branco')
   end
@@ -70,7 +66,6 @@ feature 'Headhunter register vacancy' do
 
     expect(page).to have_content('Nenhuma vaga disponível no momento')
     expect(page).not_to have_link('Caçador de candidatos')
-
   end
 
   scenario 'must not see other headhunter vacancies' do
@@ -97,7 +92,6 @@ feature 'Headhunter register vacancy' do
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
     create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência')
-
 
     login_as(headhunter, scope: :headhunter)
 

@@ -19,7 +19,6 @@ feature 'Headhunter mark up featured registration' do
     expect(page).to have_content("Não possuo experiência")
     expect(page).to have_content("⭐")
     expect(page).not_to have_link("Marcar perfil como destaque")
-
   end
 
   scenario 'headhunter unmark featured candidate' do
@@ -28,7 +27,6 @@ feature 'Headhunter mark up featured registration' do
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
     create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência', label: :featured)
-
 
     login_as(headhunter, scope: :headhunter)
 

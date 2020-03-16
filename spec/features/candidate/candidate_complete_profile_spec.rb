@@ -22,15 +22,15 @@ feature 'Candidate complete profile' do
     end
 
     expect(page).to have_content("Perfil cadastrado com sucesso!")
-    expect(page).to have_content ('Jose Fulano')
-    expect(page).to have_content ('Josias Sicrano')
-    expect(page).to have_content ('22/03/1975')
-    expect(page).to have_content ('Bacharelado em física')
-    expect(page).to have_content ('Realizado na USP em 2009')
-    expect(page).to have_content ('Professor do estado 2012-2015')
+    expect(page).to have_content 'Jose Fulano'
+    expect(page).to have_content 'Josias Sicrano'
+    expect(page).to have_content '22/03/1975'
+    expect(page).to have_content 'Bacharelado em física'
+    expect(page).to have_content 'Realizado na USP em 2009'
+    expect(page).to have_content 'Professor do estado 2012-2015'
     expect(page).to have_xpath("//img[contains(@src,'nyan.jpg')]")
-    expect(page).to have_link ('Meu perfil')
-    expect(page).not_to have_link ('Completar perfil')
+    expect(page).to have_link 'Meu perfil'
+    expect(page).not_to have_link 'Completar perfil'
   end
 
   scenario 'candidate gets redirected to new profile when not completed' do
@@ -42,9 +42,8 @@ feature 'Candidate complete profile' do
 
     click_on 'Vagas disponíveis'
 
-
     expect(current_path).to eq new_profile_path
-    expect(page).to have_content ('Complete seu perfil para ter acesso a todas as funcionalidades')
+    expect(page).to have_content 'Complete seu perfil para ter acesso a todas as funcionalidades'
   end
 
   scenario 'candidate edit profile' do
@@ -66,9 +65,9 @@ feature 'Candidate complete profile' do
     end
 
     expect(page).to have_content("Perfil alterado com sucesso!")
-    expect(page).to have_content ('Junior Silva')
-    expect(page).to have_content ('Leticia Silva')
-    expect(page).to have_content ('13/12/1985')
+    expect(page).to have_content 'Junior Silva'
+    expect(page).to have_content 'Leticia Silva'
+    expect(page).to have_content '13/12/1985'
     expect(page).to have_xpath("//img[contains(@src,'nyan.jpg')]")
   end
 
@@ -95,5 +94,5 @@ feature 'Candidate complete profile' do
 
     expect(page).to have_content('Nome completo não pode ficar em branco')
     expect(page).to have_content('Data de nascimento não pode ficar em branco')
-    end
   end
+end

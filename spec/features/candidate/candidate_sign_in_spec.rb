@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Candidate sign in' do
   scenario 'from home page' do
-
     candidate = create(:candidate)
 
     visit root_path
@@ -18,13 +17,11 @@ feature 'Candidate sign in' do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Login efetuado com sucesso')
-    expect(page).to have_link ('Sair')
-    expect(page).not_to have_link ('Entrar como Candidato')
-
+    expect(page).to have_link 'Sair'
+    expect(page).not_to have_link 'Entrar como Candidato'
   end
 
   scenario 'Candidate sign out' do
-
     candidate = create(:candidate)
 
     visit root_path
@@ -39,7 +36,7 @@ feature 'Candidate sign in' do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Logout efetuado com sucesso')
-    expect(page).to have_link ('Entrar como Candidato')
-    expect(page).not_to have_link ('Sair')
+    expect(page).to have_link 'Entrar como Candidato'
+    expect(page).not_to have_link 'Sair'
   end
 end

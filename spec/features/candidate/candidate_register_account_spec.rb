@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Candidate register account' do
   scenario 'from home page' do
-
     visit root_path
 
     click_on 'Entrar como Candidato'
@@ -18,12 +17,11 @@ feature 'Candidate register account' do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
-    expect(page).to have_link ('Sair')
-    expect(page).not_to have_link ('Entrar como Candidato')
+    expect(page).to have_link 'Sair'
+    expect(page).not_to have_link 'Entrar como Candidato'
   end
 
   scenario 'must fill in all fields' do
-
     visit root_path
 
     click_on 'Entrar como Candidato'

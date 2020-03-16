@@ -3,7 +3,6 @@ require 'time_helpers'
 
 feature 'Candidate view vacancies' do
   scenario 'from home page' do
-
     headhunter = create(:headhunter)
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate)
@@ -36,7 +35,6 @@ feature 'Candidate view vacancies' do
   end
 
   scenario 'no vacancies message' do
-
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate)
     login_as(candidate, scope: :candidate)

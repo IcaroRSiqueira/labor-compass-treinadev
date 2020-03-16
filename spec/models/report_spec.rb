@@ -4,9 +4,9 @@ RSpec.describe Report, type: :model do
   describe 'may fill field or not' do
     it 'success, refused' do
 
-      headhunter = Headhunter.create!(email: 'test@test.com', password: '123456',
+      headhunter = Headhunter.create!(email: 'test@h.com', password: '123456',
                                       name: 'Teste Enterprises')
-      candidate1 = Candidate.create!(email: 'test1@test.com', password: '123456', status: :complete)
+      candidate1 = Candidate.create!(email: 'test1@c.com', password: '123456', status: :complete)
       profile1 = Profile.create!(full_name: 'Junior Silva', social_name: 'Leticia Silva',
                                 birth_date: '13/12/1985', education: 'Graduação em ADS pela USP',
                                 description: 'Curso finalizado em 2010',

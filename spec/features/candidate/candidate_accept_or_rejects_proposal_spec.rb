@@ -28,7 +28,6 @@ feature 'Candidate accept proposal' do
     expect(page).not_to have_content("Status: Aguardando resposta")
   end
 
-
   scenario 'candidate rejects proposal' do
     headhunter = create(:headhunter)
     candidate = create(:candidate, status: :complete)

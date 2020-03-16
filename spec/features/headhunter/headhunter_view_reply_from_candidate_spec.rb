@@ -16,7 +16,6 @@ feature 'Candidate accept proposal' do
     create(:report, proposal: proposal, body: 'Infelizmente a minha expecativa de salario esta acima da oferecida')
     create(:report, proposal: proposal2, body: 'Telefone para contato: (00) 0-0000-0000)')
 
-
     login_as(headhunter, scope: :headhunter)
 
     visit root_path

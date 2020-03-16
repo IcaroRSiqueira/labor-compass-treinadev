@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Headhunter register account' do
   scenario 'from home page' do
-
     visit root_path
 
     click_on 'Entrar como Headhunter'
@@ -19,12 +18,11 @@ feature 'Headhunter register account' do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
-    expect(page).to have_link ('Sair')
-    expect(page).not_to have_link ('Entrar como Headhunter')
+    expect(page).to have_link 'Sair'
+    expect(page).not_to have_link 'Entrar como Headhunter'
   end
 
   scenario 'from home page' do
-
     visit root_path
 
     click_on 'Entrar como Headhunter'

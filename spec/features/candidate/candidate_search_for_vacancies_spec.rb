@@ -18,7 +18,6 @@ feature 'candidate search vacancy' do
 
     expect(page).to have_content('Desenvolvedor')
     expect(page).not_to have_content('Motorista')
-
   end
 
   scenario 'first letters only' do

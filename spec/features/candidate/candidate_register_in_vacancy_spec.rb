@@ -18,7 +18,6 @@ feature 'Candidate register on vacancy' do
     fill_in 'Conte-nos mais sobre você!', with: 'Possuo 3 anos de experiência em desenvolvimento web com ruby'
     click_on 'Aplicar-se à vaga'
 
-
     expect(page).to have_content("Cadastro realizado com sucesso!")
     expect(page).to have_content("Minhas vagas")
     expect(page).to have_content("Desenvolvedor")
@@ -45,10 +44,8 @@ feature 'Candidate register on vacancy' do
     fill_in 'Conte-nos mais sobre você!', with: 'Possuo 3 anos de experiência em desenvolvimento web com ruby'
     click_on 'Aplicar-se à vaga'
 
-
     expect(page).not_to have_content("Cadastro realizado com sucesso!")
     expect(page).to have_content('Você ja se cadastrou para esta vaga')
-
   end
 
   scenario 'candidate must not see others candidate entry' do
@@ -85,8 +82,7 @@ feature 'Candidate register on vacancy' do
     fill_in 'Conte-nos mais sobre você!', with: ''
     click_on 'Aplicar-se à vaga'
 
-
-      expect(page).to have_content('Sua descrição não pode ficar em branco')
-      expect(page).to have_content('Conte-nos mais sobre você!')
+    expect(page).to have_content('Sua descrição não pode ficar em branco')
+    expect(page).to have_content('Conte-nos mais sobre você!')
   end
 end
