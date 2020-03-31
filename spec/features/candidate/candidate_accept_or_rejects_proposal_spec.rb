@@ -9,8 +9,10 @@ feature 'Candidate accept proposal' do
     vacancy2 = create(:vacancy, headhunter: headhunter, title: 'Motorista')
     entry = create(:entry, candidate: candidate, vacancy: vacancy)
     entry2 = create(:entry, candidate: candidate, vacancy: vacancy2)
-    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
-    proposal2 = create(:proposal, entry: entry2, candidate: candidate, headhunter: headhunter)
+    proposal = create(:proposal, entry: entry, candidate: candidate,
+                                  headhunter: headhunter)
+    proposal2 = create(:proposal, entry: entry2, candidate: candidate,
+                                  headhunter: headhunter)
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -18,13 +20,14 @@ feature 'Candidate accept proposal' do
     click_on 'Propostas recebidas'
     click_on vacancy.title
     click_on 'Aceitar proposta'
-    fill_in 'Mensagem adicional (opcional)', with: 'Telefone para contato: (00) 0-0000-0000'
+    fill_in 'Mensagem adicional (opcional)', with: 'Telefone (00) 0-0000-0000'
     click_on 'Confirmar e aceitar proposta'
 
-    expect(page).to have_content("Parabéns, você aceitou a proposta e já tem um novo emprego!")
+    expect(page).to have_content("Parabéns, você aceitou a proposta e já tem \
+um novo emprego!")
     expect(page).to have_content("Status: Proposta aceita")
     expect(page).to have_content("Status: Proposta recusada")
-    expect(page).to have_content("Telefone para contato: (00) 0-0000-0000")
+    expect(page).to have_content("Telefone (00) 0-0000-0000")
     expect(page).not_to have_content("Status: Aguardando resposta")
   end
 
@@ -34,7 +37,8 @@ feature 'Candidate accept proposal' do
     create(:profile, candidate: candidate)
     vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
     entry = create(:entry, candidate: candidate, vacancy: vacancy)
-    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    proposal = create(:proposal, entry: entry, candidate: candidate,
+                                  headhunter: headhunter)
     login_as(candidate, scope: :candidate)
 
     login_as(candidate, scope: :candidate)
@@ -44,12 +48,14 @@ feature 'Candidate accept proposal' do
     click_on 'Propostas recebidas'
     click_on vacancy.title
     click_on 'Rejeitar proposta'
-    fill_in 'Mensagem adicional (opcional)', with: 'Infelizmente o salario nao é compativel com minha expectativa'
+    fill_in 'Mensagem adicional (opcional)', with: "Infelizmente o salario nao \
+é compativel com minha expectativa"
     click_on 'Confirmar rejeição da proposta'
 
     expect(page).to have_content("Proposta rejeitada com sucesso")
     expect(page).to have_content("Status: Proposta recusada")
-    expect(page).to have_content("Infelizmente o salario nao é compativel com minha expectativa")
+    expect(page).to have_content("Infelizmente o salario nao é compativel com \
+minha expectativa")
     expect(page).not_to have_content("Status: Proposta aceita")
     expect(page).not_to have_content("Status: Aguardando resposta")
   end
@@ -60,7 +66,8 @@ feature 'Candidate accept proposal' do
     create(:profile, candidate: candidate)
     vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
     entry = create(:entry, candidate: candidate, vacancy: vacancy)
-    proposal = create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    proposal = create(:proposal, entry: entry, candidate: candidate,
+                                  headhunter: headhunter)
 
     login_as(candidate, scope: :candidate)
 

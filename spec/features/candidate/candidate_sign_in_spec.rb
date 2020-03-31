@@ -11,7 +11,7 @@ feature 'Candidate sign in' do
     fill_in 'Email', with: candidate.email
     fill_in 'Senha', with: candidate.password
 
-    within ('form') do
+    within('form') do
       click_on 'Log in'
     end
 

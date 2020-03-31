@@ -8,7 +8,10 @@ FactoryBot.define do
     experience { '3 anos de desenvolvimento back end em ruby' }
     candidate
     trait :with_avatar do
-      avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'nyan.jpg'), 'image/jpg') }
+      avatar do
+        fixture_file_upload(Rails.root.join("spec/support/assets/nyan.jpg"),
+                            'image/jpg')
+      end
     end
   end
 end

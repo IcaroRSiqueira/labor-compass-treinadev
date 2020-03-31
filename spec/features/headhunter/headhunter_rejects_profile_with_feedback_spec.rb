@@ -14,11 +14,13 @@ feature 'Headhunter rejects candidates' do
 
     click_on 'Aplicaçōes recebidas'
     click_on 'Rejeitar participação'
-    fill_in 'Feedback ao candidato', with: 'Infelizmente o perfil não supriu as necessidades da vaga'
+    fill_in 'Feedback ao candidato', with: "Infelizmente o perfil não supriu \
+as necessidades da vaga"
     click_on 'Enviar feedback'
 
     expect(page).to have_content("Candidato rejeitado com sucesso")
-    expect(page).to have_content("Infelizmente o perfil não supriu as necessidades da vaga")
+    expect(page).to have_content("Infelizmente o perfil não supriu as \
+necessidades da vaga")
     expect(page).to have_content("Desenvolvedor")
     expect(page).to have_content("Leticia Silva")
     expect(page).not_to have_link("Rejeitar participação")

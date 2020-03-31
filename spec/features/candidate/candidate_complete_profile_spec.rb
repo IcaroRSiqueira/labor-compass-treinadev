@@ -17,7 +17,7 @@ feature 'Candidate complete profile' do
     fill_in 'Experiências profissionais', with: 'Professor do estado 2012-2015'
     attach_file("Imagem de perfil", Rails.root + "spec/support/nyan.jpg")
 
-    within ('form') do
+    within('form') do
       click_on 'Registrar perfil'
     end
 
@@ -43,13 +43,15 @@ feature 'Candidate complete profile' do
     click_on 'Vagas disponíveis'
 
     expect(current_path).to eq new_profile_path
-    expect(page).to have_content 'Complete seu perfil para ter acesso a todas as funcionalidades'
+    expect(page).to have_content "Complete seu perfil para ter acesso a todas \
+as funcionalidades"
   end
 
   scenario 'candidate edit profile' do
     candidate = create(:candidate, status: :complete)
-    create(:profile, candidate: candidate, full_name: 'Junior Silva', social_name: 'Leticia Silva',
-                              birth_date: '13/12/1985')
+    create(:profile, candidate: candidate, full_name: 'Junior Silva',
+                                social_name: 'Leticia Silva',
+                                birth_date: '13/12/1985')
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -57,10 +59,11 @@ feature 'Candidate complete profile' do
     click_on 'Meu perfil'
     click_on 'Editar perfil'
 
-    fill_in 'Formação acadêmica', with: 'Graduação em ADS pela USP e pós doutorado em ciências de dados'
+    fill_in 'Formação acadêmica', with: "Graduação em ADS pela USP e pós \
+doutorado em ciências de dados"
     attach_file("Imagem de perfil", Rails.root + "spec/support/nyan.jpg")
 
-    within ('form') do
+    within('form') do
       click_on 'Registrar perfil'
     end
 
@@ -88,7 +91,7 @@ feature 'Candidate complete profile' do
     fill_in 'Experiências profissionais', with: 'Professor do estado 2012-2015'
     attach_file("Imagem de perfil", Rails.root + "spec/support/nyan.jpg")
 
-    within ('form') do
+    within('form') do
       click_on 'Registrar perfil'
     end
 

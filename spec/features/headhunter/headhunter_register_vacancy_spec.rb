@@ -21,7 +21,8 @@ feature 'Headhunter register vacancy' do
 
     expect(page).to have_content("Vaga cadastrada com sucesso")
     expect(page).to have_content("Caçador de candidatos")
-    expect(page).to have_content("O funcionário deverá pesquisar por perfis de possíveis futuros funcionários")
+    expect(page).to have_content("O funcionário deverá pesquisar por perfis de \
+possíveis futuros funcionários")
     expect(page).to have_content("Bom relacionamento interpessoal")
     expect(page).to have_content("2500-3000")
     expect(page).to have_content("Pleno")
@@ -70,9 +71,11 @@ feature 'Headhunter register vacancy' do
 
   scenario 'must not see other headhunter vacancies' do
     headhunter = create(:headhunter)
-    create(:vacancy, headhunter: headhunter, title: 'Caçador de candidatos', description: 'Finder de candidatos')
-    headhunter2 = create(:headhunter, email: 'headhunter2@test.com', name: 'inc')
-    create(:vacancy, headhunter: headhunter2, title: 'Headhunter Seeker', description: 'Procurador de headhunters')
+    create(:vacancy, headhunter: headhunter, title: 'Caçador de candidatos',
+                      description: 'Finder de candidatos')
+    headhunter2 = create(:headhunter, email: 'head2@test.com', name: 'inc')
+    create(:vacancy, headhunter: headhunter2, title: 'Headhunter Seeker',
+                      description: 'Procurador de headhunters')
 
     login_as(headhunter, scope: :headhunter)
 
@@ -88,10 +91,12 @@ feature 'Headhunter register vacancy' do
 
   scenario 'cant delete vacancy when there are entries' do
     headhunter = create(:headhunter)
-    vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor Web')
+    vacancy = create(:vacancy, headhunter: headhunter,
+                                title: 'Desenvolvedor Web')
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
-    create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência')
+    create(:entry, candidate: candidate, vacancy: vacancy,
+                    description: 'Não possuo experiência')
 
     login_as(headhunter, scope: :headhunter)
 
@@ -101,7 +106,8 @@ feature 'Headhunter register vacancy' do
     click_on 'Desenvolvedor Web'
     click_on 'Deletar vaga'
 
-    expect(page).to have_content('Não é possível deletar uma vaga que ja possui aplicações')
+    expect(page).to have_content("Não é possível deletar uma vaga que ja \
+possui aplicações")
     expect(page).to have_link('Desenvolvedor Web')
   end
 end

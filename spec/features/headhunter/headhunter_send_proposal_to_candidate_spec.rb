@@ -15,10 +15,12 @@ feature 'Headhunter send proposal to candidate' do
     click_on 'Aplicaçōes recebidas'
     click_on 'Enviar proposta para candidato'
     fill_in 'Data prevista para início', with: 20.day.from_now
-    fill_in 'Carga horária', with: 'Segunda a sexta-feira, das 9 as 17h, totalizando 41 horas semanais'
+    fill_in 'Carga horária', with: "Segunda a sexta-feira, das 9 as 17h, \
+totalizando 41 horas semanais"
     fill_in 'Benefícios', with: 'Vale transporte e alimentação'
     fill_in 'Salário', with: 'R$ 3000,00 ao mês'
-    fill_in 'Detalhes', with: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa'
+    fill_in 'Detalhes', with: "A desenvolvedora deverá trabalhar junto a equipe\
+ de desenvolvimento adicionando as features exigidas ao sistema da empresa"
     click_on 'Enviar proposta'
 
     expect(page).to have_content("Proposta enviada!")
@@ -43,7 +45,7 @@ feature 'Headhunter send proposal to candidate' do
     fill_in 'Carga horária', with: ''
     fill_in 'Benefícios', with: 'Vale transporte e alimentação'
     fill_in 'Salário', with: ''
-    fill_in 'Detalhes', with: 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa'
+    fill_in 'Detalhes', with: 'Testes em desenvolvimento'
     click_on 'Enviar proposta'
 
     expect(page).not_to have_content("Proposta enviada!")
@@ -51,13 +53,14 @@ feature 'Headhunter send proposal to candidate' do
     expect(page).to have_content("Salário não pode ficar em branco")
   end
 
-  scenario 'cannot send another proposal to the same candidate about the same entry' do
+  scenario 'cant send other proposal for same candidate about the same entry' do
     headhunter = create(:headhunter)
     vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
     entry = create(:entry, candidate: candidate, vacancy: vacancy)
-    create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    create(:proposal, entry: entry, candidate: candidate,
+                      headhunter: headhunter)
 
     login_as(headhunter, scope: :headhunter)
 
@@ -73,20 +76,24 @@ feature 'Headhunter send proposal to candidate' do
     click_on 'Enviar proposta'
 
     expect(page).not_to have_content("Proposta enviada!")
-    expect(page).to have_content('Você ja enviou uma proposta para esta aplicação')
+    expect(page).to have_content("Você ja enviou uma proposta para esta \
+aplicação")
   end
 
   scenario 'headhunter must not see proposals of another headhunter' do
     headhunter = create(:headhunter, name: 'Teste Inc')
     vacancy = create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor')
-    headhunter2 = create(:headhunter, name: 'Dummy', email: 'headhunter2@test.com')
+    headhunter2 = create(:headhunter, name: 'Dummy',
+                                      email: 'headhunter2@test.com')
     vacancy2 = create(:vacancy, headhunter: headhunter, title: 'Motorista')
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
     entry = create(:entry, candidate: candidate, vacancy: vacancy)
-    create(:proposal, entry: entry, candidate: candidate, headhunter: headhunter)
+    create(:proposal, entry: entry, candidate: candidate,
+                      headhunter: headhunter)
     entry2 = create(:entry, candidate: candidate, vacancy: vacancy2)
-    create(:proposal, entry: entry2, candidate: candidate, headhunter: headhunter2)
+    create(:proposal, entry: entry2, candidate: candidate,
+                      headhunter: headhunter2)
 
     login_as(headhunter, scope: :headhunter)
 

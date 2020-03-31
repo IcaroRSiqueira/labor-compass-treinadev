@@ -11,7 +11,7 @@ feature 'Headhunter sign in' do
     fill_in 'Email', with: headhunter.email
     fill_in 'Senha', with: headhunter.password
 
-    within ('form') do
+    within('form') do
       click_on 'Log in'
     end
 

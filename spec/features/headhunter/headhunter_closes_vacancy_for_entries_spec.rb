@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'Headhunter closes vacancy' do
   scenario 'from home page' do
     headhunter = create(:headhunter)
-    vacancy = create(:vacancy, title: 'Motorista de limosine', headhunter: headhunter)
+    vacancy = create(:vacancy, title: 'Motorista de limosine',
+                                headhunter: headhunter)
     login_as(headhunter, scope: :headhunter)
 
     visit root_path
@@ -14,7 +15,6 @@ feature 'Headhunter closes vacancy' do
 
     expect(page).to have_content("Vaga encerrada com sucesso")
     expect(page).to have_content("Motorista de limosine")
-    expect(page).to have_content("Desenvilvimento de paginas web com ruby on rails")
     expect(page).to have_content("Status: Inscrições encerradas")
     expect(page).not_to have_content("Status: Inscrições abertas")
   end

@@ -6,12 +6,15 @@ feature 'Candidate view vacancies' do
     headhunter = create(:headhunter)
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate)
-    create(:vacancy, headhunter: headhunter, title: 'Entregador', description: 'Realizar entregas',
-                    skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
-                    end_date: 10.day.from_now, location: 'Rua Augusta')
-    create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor Web', description: 'Desenvilvimento de paginas web com ruby on rails',
-                    skill: 'Experiencia com ruby on rails', wage: '3000', role: 'Junior',
-                    end_date: 15.day.from_now, location: 'Av Paulista')
+    create(:vacancy, headhunter: headhunter, title: 'Entregador',
+                      description: 'Realizar entregas',
+                      skill: 'Possuir CNH A e B', wage: '2000', role: 'Pleno',
+                      end_date: 10.day.from_now, location: 'Rua Augusta')
+    create(:vacancy, headhunter: headhunter, title: 'Desenvolvedor Web',
+                      description: 'Desenvilvimento de paginas web',
+                      skill: 'Experiencia com ruby on rails',
+                      wage: '3000', role: 'Junior',
+                      end_date: 15.day.from_now, location: 'Av Paulista')
     login_as(candidate, scope: :candidate)
 
     visit root_path
@@ -26,7 +29,7 @@ feature 'Candidate view vacancies' do
     expect(page).to have_content(10.day.from_now.strftime('%d/%m/%Y'))
     expect(page).to have_content("Rua Augusta")
     expect(page).to have_content("Desenvolvedor Web")
-    expect(page).to have_content("Desenvilvimento de paginas web com ruby on rails")
+    expect(page).to have_content("Desenvilvimento de paginas web")
     expect(page).to have_content("Experiencia com ruby on rails")
     expect(page).to have_content("3000")
     expect(page).to have_content("Junior")

@@ -6,7 +6,8 @@ feature 'Headhunter mark up featured registration' do
     vacancy = create(:vacancy, headhunter: headhunter)
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
-    create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência')
+    create(:entry, candidate: candidate, vacancy: vacancy,
+                    description: 'Não possuo experiência')
 
     login_as(headhunter, scope: :headhunter)
 
@@ -26,7 +27,8 @@ feature 'Headhunter mark up featured registration' do
     vacancy = create(:vacancy, headhunter: headhunter)
     candidate = create(:candidate, status: :complete)
     create(:profile, candidate: candidate, social_name: 'Leticia Silva')
-    create(:entry, candidate: candidate, vacancy: vacancy, description: 'Não possuo experiência', label: :featured)
+    create(:entry, candidate: candidate, vacancy: vacancy,
+                    description: 'Não possuo experiência', label: :featured)
 
     login_as(headhunter, scope: :headhunter)
 

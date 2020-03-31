@@ -4,7 +4,7 @@ FactoryBot.define do
     workload { 'Segunda a sexta-feira, das 9 as 17h' }
     benefits { 'Vale transporte e alimentação' }
     wage { 'R$ 3000,00 ao mês' }
-    details { 'A desenvolvedora deverá trabalhar junto a equipe de desenvolvimento adicionando as features exigidas ao sistema da empresa, favor, enviar telefone para contato no campo mensagem adicional' }
+    details { "O candidato deverá trabalhar junto a equipe de desenvolvimento" }
     entry
     candidate
     headhunter
