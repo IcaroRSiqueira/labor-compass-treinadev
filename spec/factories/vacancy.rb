@@ -8,5 +8,6 @@ FactoryBot.define do
     end_date { 15.day.from_now }
     location { 'Av. Paulista' }
     headhunter
+    status { 0 }
   end
 end
