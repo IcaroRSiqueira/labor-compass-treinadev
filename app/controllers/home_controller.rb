@@ -1,20 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    @headhunters = Headhunter.all
-    @vacancies = Vacancy.all
-    @candidates = Candidate.all
-    @entries = Entry.all
-    @proposals = Proposal.all
-    if @vacancies.count != 0
-      @apply_for_vacancy = (@entries.count)/(@vacancies.count)
-    elsif @vacancies.count == 0
-      @apply_for_vacancy = 0
-    end
-    if @entries.count != 0
-      @percent_p_a = (((@proposals.count).to_f/(@entries.count).to_f)*100).round
-    elsif @entries.count == 0
-      @percent_p_a = 0
-    end
+    @n_of_headhunters = HomeCalculator.headhunters_count
+    @n_of_candidates = HomeCalculator.candidates_count
+    @avaiable_vacancies = HomeCalculator.avaiable_vacancies_count
+    @apply_for_vacancy = HomeCalculator.number_of_applies_for_vacancies
+    @percent_p_a = HomeCalculator.percentage_of_proposals_from_apllies
   end
 end

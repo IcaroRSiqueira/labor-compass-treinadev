@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-04-01T12:24:40-03:00">2020-04-01T12:24:40-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-04-01T17:59:47-03:00">2020-04-01T17:59:47-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.13%</span></span>
+    (<span class="covered_percent"><span class="green">99.09%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.76
+         2.29
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>79</b> files in total.
-    <b>1502</b> relevant lines. 
-    <span class="green"><b>1489</b> lines covered</span> and
+    <b>1423</b> relevant lines. 
+    <span class="green"><b>1410</b> lines covered</span> and
     <span class="red"><b>13</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -113,11 +113,11 @@
       <tr>
         <td class="strong"><a href="#45487da6f324c47471dceecdb3cae23cd8868418" class="src_link" title="app/controllers/home_controller.rb">app/controllers/home_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>20</td>
-        <td>15</td>
-        <td>15</td>
+        <td>10</td>
+        <td>7</td>
+        <td>7</td>
         <td>0</td>
-        <td>48.7</td>
+        <td>38.9</td>
       </tr>
       
       <tr>
@@ -267,7 +267,17 @@
         <td>10</td>
         <td>10</td>
         <td>0</td>
-        <td>10.2</td>
+        <td>8.6</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#57b7af0a08abeb48b51d1c90735c1fbc5a4d66a6" class="src_link" title="app/services/home_calculator.rb">app/services/home_calculator.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>35</td>
+        <td>22</td>
+        <td>22</td>
+        <td>0</td>
+        <td>20.2</td>
       </tr>
       
       <tr>
@@ -447,7 +457,7 @@
         <td>4</td>
         <td>4</td>
         <td>0</td>
-        <td>78.8</td>
+        <td>19.3</td>
       </tr>
       
       <tr>
@@ -457,7 +467,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>9.2</td>
+        <td>6.0</td>
       </tr>
       
       <tr>
@@ -477,7 +487,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>96.0</td>
+        <td>22.2</td>
       </tr>
       
       <tr>
@@ -497,7 +507,7 @@
         <td>10</td>
         <td>10</td>
         <td>0</td>
-        <td>8.0</td>
+        <td>6.5</td>
       </tr>
       
       <tr>
@@ -517,7 +527,7 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>37.4</td>
+        <td>25.7</td>
       </tr>
       
       <tr>
@@ -706,16 +716,6 @@
         <td>36</td>
         <td>24</td>
         <td>24</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#1b3e9164ca489badaaa65423257d0d0c30a6212d" class="src_link" title="spec/features/home_counters_spec.rb">spec/features/home_counters_spec.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>176</td>
-        <td>93</td>
-        <td>93</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -1779,8 +1779,8 @@
     <h3>app/controllers/home_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>15</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1806,103 +1806,43 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="4">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="54" data-linenumber="4">
+          <span class="hits">54</span>
           
-          <code class="ruby">    @headhunters = Headhunter.all</code>
+          <code class="ruby">    @n_of_headhunters = HomeCalculator.headhunters_count</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="5">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="54" data-linenumber="5">
+          <span class="hits">54</span>
           
-          <code class="ruby">    @vacancies = Vacancy.all</code>
+          <code class="ruby">    @n_of_candidates = HomeCalculator.candidates_count</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="6">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="54" data-linenumber="6">
+          <span class="hits">54</span>
           
-          <code class="ruby">    @candidates = Candidate.all</code>
+          <code class="ruby">    @avaiable_vacancies = HomeCalculator.avaiable_vacancies_count</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="7">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="54" data-linenumber="7">
+          <span class="hits">54</span>
           
-          <code class="ruby">    @entries = Entry.all</code>
+          <code class="ruby">    @apply_for_vacancy = HomeCalculator.number_of_applies_for_vacancies</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="8">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="54" data-linenumber="8">
+          <span class="hits">54</span>
           
-          <code class="ruby">    @proposals = Proposal.all</code>
+          <code class="ruby">    @percent_p_a = HomeCalculator.percentage_of_proposals_from_apllies</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="9">
-          <span class="hits">72</span>
-          
-          <code class="ruby">    if @vacancies.count != 0</code>
-        </li>
-      
-        <li class="covered" data-hits="38" data-linenumber="10">
-          <span class="hits">38</span>
-          
-          <code class="ruby">      @apply_for_vacancy = (@entries.count)/(@vacancies.count)</code>
-        </li>
-      
-        <li class="covered" data-hits="34" data-linenumber="11">
-          <span class="hits">34</span>
-          
-          <code class="ruby">    elsif @vacancies.count == 0</code>
-        </li>
-      
-        <li class="covered" data-hits="34" data-linenumber="12">
-          <span class="hits">34</span>
-          
-          <code class="ruby">      @apply_for_vacancy = 0</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="72" data-linenumber="14">
-          <span class="hits">72</span>
-          
-          <code class="ruby">    if @entries.count != 0</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="15">
-          <span class="hits">26</span>
-          
-          <code class="ruby">      @percent_p_a = (((@proposals.count).to_f/(@entries.count).to_f)*100).round</code>
-        </li>
-      
-        <li class="covered" data-hits="46" data-linenumber="16">
-          <span class="hits">46</span>
-          
-          <code class="ruby">    elsif @entries.count == 0</code>
-        </li>
-      
-        <li class="covered" data-hits="46" data-linenumber="17">
-          <span class="hits">46</span>
-          
-          <code class="ruby">      @percent_p_a = 0</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="10">
           
           
           <code class="ruby">end</code>
@@ -4029,8 +3969,8 @@
           <code class="ruby">  def end_date_must_be_greater_than_today</code>
         </li>
       
-        <li class="covered" data-hits="88" data-linenumber="11">
-          <span class="hits">88</span>
+        <li class="covered" data-hits="72" data-linenumber="11">
+          <span class="hits">72</span>
           
           <code class="ruby">    if end_date &lt;= Date.current</code>
         </li>
@@ -4096,6 +4036,235 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="57b7af0a08abeb48b51d1c90735c1fbc5a4d66a6">
+  <div class="header">
+    <h3>app/services/home_calculator.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class HomeCalculator</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  @headhunters = Headhunter.all</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  @candidates = Candidate.all</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  @vacancies = Vacancy.all</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  @entries = Entry.all</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  @proposals = Proposal.all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.headhunters_count</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="9">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    @headhunters.count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.candidates_count</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="13">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    @candidates.count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.avaiable_vacancies_count</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="17">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    @vacancies.avaiable.count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.number_of_applies_for_vacancies</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="21">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    if @vacancies.count != 0</code>
+        </li>
+      
+        <li class="covered" data-hits="31" data-linenumber="22">
+          <span class="hits">31</span>
+          
+          <code class="ruby">      @entries.count / @vacancies.count</code>
+        </li>
+      
+        <li class="covered" data-hits="23" data-linenumber="23">
+          <span class="hits">23</span>
+          
+          <code class="ruby">    elsif @vacancies.count.zero?</code>
+        </li>
+      
+        <li class="covered" data-hits="23" data-linenumber="24">
+          <span class="hits">23</span>
+          
+          <code class="ruby">      0</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.percentage_of_proposals_from_apllies</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="29">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    if @entries.count != 0</code>
+        </li>
+      
+        <li class="covered" data-hits="22" data-linenumber="30">
+          <span class="hits">22</span>
+          
+          <code class="ruby">      (@proposals.count.to_f / @entries.count * 100).round</code>
+        </li>
+      
+        <li class="covered" data-hits="32" data-linenumber="31">
+          <span class="hits">32</span>
+          
+          <code class="ruby">    elsif @entries.count.zero?</code>
+        </li>
+      
+        <li class="covered" data-hits="32" data-linenumber="32">
+          <span class="hits">32</span>
+          
+          <code class="ruby">      0</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">end</code>
@@ -7629,14 +7798,14 @@
           <code class="ruby">  factory :candidate do</code>
         </li>
       
-        <li class="covered" data-hits="152" data-linenumber="3">
-          <span class="hits">152</span>
+        <li class="covered" data-hits="33" data-linenumber="3">
+          <span class="hits">33</span>
           
           <code class="ruby">    email { &quot;test#{rand}@candidate.com&quot; }</code>
         </li>
       
-        <li class="covered" data-hits="161" data-linenumber="4">
-          <span class="hits">161</span>
+        <li class="covered" data-hits="42" data-linenumber="4">
+          <span class="hits">42</span>
           
           <code class="ruby">    password { &#39;12345678&#39; }</code>
         </li>
@@ -7684,8 +7853,8 @@
           <code class="ruby">  factory :entry do</code>
         </li>
       
-        <li class="covered" data-hits="42" data-linenumber="3">
-          <span class="hits">42</span>
+        <li class="covered" data-hits="26" data-linenumber="3">
+          <span class="hits">26</span>
           
           <code class="ruby">    description { &#39;Possuo bastante experiencia como desenvolvedor&#39; }</code>
         </li>
@@ -7800,20 +7969,20 @@
           <code class="ruby">  factory :headhunter do</code>
         </li>
       
-        <li class="covered" data-hits="159" data-linenumber="3">
-          <span class="hits">159</span>
+        <li class="covered" data-hits="36" data-linenumber="3">
+          <span class="hits">36</span>
           
           <code class="ruby">    email { &quot;headhunter#{rand}@test.com&quot; }</code>
         </li>
       
-        <li class="covered" data-hits="162" data-linenumber="4">
-          <span class="hits">162</span>
+        <li class="covered" data-hits="39" data-linenumber="4">
+          <span class="hits">39</span>
           
           <code class="ruby">    password { &#39;12345678&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="157" data-linenumber="5">
-          <span class="hits">157</span>
+        <li class="covered" data-hits="34" data-linenumber="5">
+          <span class="hits">34</span>
           
           <code class="ruby">    name { &#39;Test Enterprises&#39; }</code>
         </li>
@@ -7982,32 +8151,32 @@
           <code class="ruby">  factory :proposal do</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="3">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="3">
+          <span class="hits">12</span>
           
           <code class="ruby">    start_date { 20.day.from_now }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="4">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="4">
+          <span class="hits">12</span>
           
           <code class="ruby">    workload { &#39;Segunda a sexta-feira, das 9 as 17h&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="5">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="5">
+          <span class="hits">12</span>
           
           <code class="ruby">    benefits { &#39;Vale transporte e alimentação&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="6">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="6">
+          <span class="hits">12</span>
           
           <code class="ruby">    wage { &#39;R$ 3000,00 ao mês&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="7">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="7">
+          <span class="hits">12</span>
           
           <code class="ruby">    details { &quot;O candidato deverá trabalhar junto a equipe de desenvolvimento&quot; }</code>
         </li>
@@ -8128,44 +8297,44 @@
           <code class="ruby">  factory :vacancy do</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="3">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="7" data-linenumber="3">
+          <span class="hits">7</span>
           
           <code class="ruby">    title { &#39;Desenvolvedor Web&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="4">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="37" data-linenumber="4">
+          <span class="hits">37</span>
           
           <code class="ruby">    description { &#39;Desenvilvimento de paginas web com ruby on rails&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="5">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="39" data-linenumber="5">
+          <span class="hits">39</span>
           
           <code class="ruby">    skill { &#39;Experiencia com ruby on rails&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="6">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="39" data-linenumber="6">
+          <span class="hits">39</span>
           
           <code class="ruby">    wage { &#39;wage&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="7">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="39" data-linenumber="7">
+          <span class="hits">39</span>
           
           <code class="ruby">    role { &#39;Junior&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="8">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="39" data-linenumber="8">
+          <span class="hits">39</span>
           
           <code class="ruby">    end_date { 15.day.from_now }</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="9">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="39" data-linenumber="9">
+          <span class="hits">39</span>
           
           <code class="ruby">    location { &#39;Av. Paulista&#39; }</code>
         </li>
@@ -8176,8 +8345,8 @@
           <code class="ruby">    headhunter</code>
         </li>
       
-        <li class="covered" data-hits="57" data-linenumber="11">
-          <span class="hits">57</span>
+        <li class="covered" data-hits="41" data-linenumber="11">
+          <span class="hits">41</span>
           
           <code class="ruby">    status { 0 }</code>
         </li>
@@ -15210,1081 +15379,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-
-      
-        <div class="source_table" id="1b3e9164ca489badaaa65423257d0d0c30a6212d">
-  <div class="header">
-    <h3>spec/features/home_counters_spec.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>93</b> relevant lines. 
-      <span class="green"><b>93</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">require &#39;rails_helper&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="2">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">feature &#39;Index counter&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;1 headhunter&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:headhunter)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;1 empresa(s) cadastrada(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="11">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="12">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;0 headhunter&#39; do</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;0 empresa(s) cadastrada(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;3 headhunter&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create_list(:headhunter, 3)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="22">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="23">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;3 empresa(s) cadastrada(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;100 headhunter&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create_list(:headhunter, 100)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="31">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;100 empresa(s) cadastrada(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="32">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="34">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;1 candidate&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:candidate)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="39">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;1 candidato(s) cadastrado(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="42">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;0 candidate&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="43">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="44">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="45">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;0 candidato(s) cadastrado(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="46">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="47">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="48">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;3 candidate&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="49">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create_list(:candidate, 3)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="50">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="51">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="52">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="53">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;3 candidato(s) cadastrado(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="54">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="55">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="56">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;100 candidate&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="57">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create_list(:candidate, 100)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="58">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="59">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="60">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="61">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;100 candidato(s) cadastrado(s)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="62">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="63">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="64">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;1 vacancy&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="65">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:vacancy)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="67">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="68">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="69">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;1 vaga(s) disponível(is)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="70">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="71">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="72">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;0 vacancy&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="73">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="74">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="75">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;0 vaga(s) disponível(is)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="76">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="78">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;3 vacancy&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create_list(:vacancy, 3)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="80">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="81">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="82">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="83">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;3 vaga(s) disponível(is)&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="86">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;vacancy entry average 0&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="87">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:vacancy)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="88">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="89">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="90">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="91">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, cada vaga cadastrada recebe 0 \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="92">
-          
-          
-          <code class="ruby">aplicaçōes&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="93">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="94">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="95">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;vacancy entry average 2&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="96">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    candidate = create(:candidate)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="97">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    candidate2 = create(:candidate)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="98">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="99">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    vacancy = create(:vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="100">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate, vacancy: vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="101">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate2, vacancy: vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="102">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    vacancy2 = create(:vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="103">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate, vacancy: vacancy2)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="104">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate2, vacancy: vacancy2)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="105">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="106">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="107">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="108">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, cada vaga cadastrada recebe 2 \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="109">
-          
-          
-          <code class="ruby">aplicaçōes&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="110">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="112">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;vacancy entry average 2/5 == 2&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="113">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    candidate = create(:candidate)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="114">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    candidate2 = create(:candidate)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="115">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    candidate3 = create(:candidate)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="116">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="117">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    vacancy = create(:vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="118">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate, vacancy: vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="119">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate2, vacancy: vacancy)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="120">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="121">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    vacancy2 = create(:vacancy)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="122">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate, vacancy: vacancy2)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="123">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate2, vacancy: vacancy2)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="124">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:entry, candidate: candidate3, vacancy: vacancy2)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="125">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="126">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="127">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="128">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, cada vaga cadastrada recebe 2 \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="129">
-          
-          
-          <code class="ruby">aplicaçōes&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="130">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="131">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="132">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;vacancy entry average 0&#39; do</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="133">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="134">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="135">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="136">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, cada vaga cadastrada recebe 0 \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="137">
-          
-          
-          <code class="ruby">aplicaçōes&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="138">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="139">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="140">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;average proposal to entry 0&#39; do</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="141">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="142">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="143">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="144">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, 0% das aplicaçōes recebem \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="145">
-          
-          
-          <code class="ruby">propostas!&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="146">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="147">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="148">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;average proposal to entry 50&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="149">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry = create(:entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="150">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry2 = create(:entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="151">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry3 = create(:entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="152">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry4 = create(:entry)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="153">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="154">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="155">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:proposal, entry: entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="156">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:proposal, entry: entry2)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="157">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="158">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="159">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="160">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, 50% das aplicaçōes recebem \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="161">
-          
-          
-          <code class="ruby">propostas!&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="162">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="163">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="164">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  scenario &#39;average proposal to entry 33.3&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="165">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry = create(:entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="166">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry2 = create(:entry)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="167">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    entry3 = create(:entry)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="168">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="169">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    create(:proposal, entry: entry)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="170">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="171">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    visit root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="172">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="173">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(page).to have_content(&quot;Em média, 33% das aplicaçōes recebem \</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="174">
-          
-          
-          <code class="ruby">propostas!&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="175">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="176">
           
           
           <code class="ruby">end</code>
