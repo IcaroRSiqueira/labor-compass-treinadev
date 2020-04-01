@@ -1,6 +1,13 @@
 class VacanciesController < ApplicationController
-  before_action :authenticate_headhunter!, only: [:new, :create, :edit, :update, :destroy, :finalize]
-  before_action :redirect_candidate_to_new_profile, only: [:index, :show, :search]
+  before_action :authenticate_headhunter!, only: [:new,
+                                                  :create,
+                                                  :edit,
+                                                  :update,
+                                                  :destroy,
+                                                  :finalize]
+  before_action :redirect_candidate_to_new_profile, only: [:index,
+                                                           :show,
+                                                           :search]
   before_action :vacancy_expiration_show, only: [:show]
   before_action :vacancy_expiration_index, only: [:index]
   before_action :check_if_there_are_entries, only: [:destroy]
@@ -60,7 +67,8 @@ class VacanciesController < ApplicationController
   def redirect_candidate_to_new_profile
     if candidate_signed_in?
       unless current_candidate.complete?
-      redirect_to new_profile_path, notice: 'Complete seu perfil para ter acesso a todas as funcionalidades'
+      redirect_to new_profile_path, notice: "Complete seu perfil para ter \
+acesso a todas as funcionalidades"
       end
     end
   end

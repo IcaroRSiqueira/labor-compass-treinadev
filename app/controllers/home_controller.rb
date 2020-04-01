@@ -12,9 +12,9 @@ class HomeController < ApplicationController
       @apply_for_vacancy = 0
     end
     if @entries.count != 0
-      @percent_proposal_for_apply = (((@proposals.count).to_f/(@entries.count).to_f)*100).round
+      @percent_p_a = (((@proposals.count).to_f/(@entries.count).to_f)*100).round
     elsif @entries.count == 0
-      @percent_proposal_for_apply = 0
+      @percent_p_a = 0
     end
   end
 end

@@ -8,7 +8,8 @@ class ReportsController < ApplicationController
     @report.save!
     @proposals.each { |p| p.refused! }
     @proposal.accepted!
-    redirect_to entry_proposals_path(current_candidate), notice: 'Parabéns, você aceitou a proposta e já tem um novo emprego!'
+    redirect_to entry_proposals_path(current_candidate), notice: "Parabéns, \
+você aceitou a proposta e já tem um novo emprego!"
   end
 
   def negative
@@ -16,7 +17,8 @@ class ReportsController < ApplicationController
     @report = @proposal.create_report(report_params)
     @report.save!
     @proposal.refused!
-    redirect_to entry_proposals_path(current_candidate), notice: 'Proposta rejeitada com sucesso'
+    redirect_to entry_proposals_path(current_candidate), notice: "Proposta \
+rejeitada com sucesso"
   end
 
   private

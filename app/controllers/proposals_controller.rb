@@ -24,7 +24,8 @@ class ProposalsController < ApplicationController
         render :new
       end
     elsif @entry.proposal.present?
-      redirect_to entry_proposals_path, notice: 'Você ja enviou uma proposta para esta aplicação'
+      redirect_to entry_proposals_path, notice: "Você ja enviou uma proposta \
+para esta aplicação"
     end
   end
 
@@ -45,8 +46,13 @@ class ProposalsController < ApplicationController
   private
 
   def proposals_params
-    params.require(:proposal).permit(:start_date, :workload, :benefits,
-                                     :wage, :details).merge(candidate_id: @candidate.id, headhunter: current_headhunter)
+    headhunter = current_headhunter
+    params.require(:proposal).permit(:start_date,
+                                     :workload,
+                                     :benefits,
+                                     :details,
+                                     :wage).merge(candidate_id: @candidate.id,
+                                                  headhunter: headhunter)
 
   end
 end

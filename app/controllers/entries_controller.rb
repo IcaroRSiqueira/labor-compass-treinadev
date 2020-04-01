@@ -6,7 +6,9 @@ class EntriesController < ApplicationController
     if candidate_signed_in?
       @candidate_entries = current_candidate.entry.all
     elsif headhunter_signed_in?
-      current_headhunter.vacancies.each { |vacancy| @headhunter_entries = vacancy.entries }
+      current_headhunter.vacancies.each do |vacancy|
+        @headhunter_entries = vacancy.entries
+      end
     end
     @comment = Comment.new
     @candidate = current_candidate
@@ -17,9 +19,11 @@ class EntriesController < ApplicationController
     @entry = Entry.create(entry_params)
     if @entry.save
       @entry.avaiable!
-      redirect_to registered_entries_path, notice: 'Cadastro realizado com sucesso!'
+      redirect_to registered_entries_path, notice: "Cadastro realizado com \
+sucesso!"
     else
-      redirect_to @vacancy, notice: "Erro(s): #{(@entry.errors.full_messages.each {|m| m}).join}"
+      redirect_to @vacancy, notice: "Erro(s): \
+#{(@entry.errors.full_messages.each {|m| m}).join}"
     end
   end
 
@@ -41,7 +45,9 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:description).merge(vacancy: @vacancy, candidate: current_candidate)
+    candidate = current_candidate
+    params.require(:entry).permit(:description).merge(vacancy: @vacancy,
+                                                      candidate: candidate)
 
   end
 
